@@ -1,23 +1,34 @@
+import React, { useState} from 'react'
 import logo from './logo.svg';
 import './App.css';
-
+import QuestionCard from './Components/QuestionCard';
+import QuizPage from './Components/QuizPage';
 function App() {
+const [quizData, setQuizData] = useState([])
+   const getTriviaData =()=>{
+     fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean').then((response)=>{
+      return response.json()
+     }).then((data)=>{
+       const realData = data.results
+      console.log('results',data.results)
+      
+      setQuizData(realData)
+      console.log('quizData',quizData)
+     })
+   }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   <header>
+   <button
+   onClick={()=>{
+     
+    getTriviaData()
+    
+  }}
+   > Test Data Button</button>
+   </header>
+<QuizPage quiz={quizData}/>
+
     </div>
   );
 }
