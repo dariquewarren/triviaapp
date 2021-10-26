@@ -4,16 +4,15 @@ function QuizPage(props) {
 
 const [quizResponses, changeQuizResponses] = useState([])
 
-const quizLengthArray = Array(props.quizLength)
-const [questionNumber, modifyQuestionNumber] = useState(0)
+const [questionIndexNumber, modifyQuestionNumber] = useState(0)
 
 const changeQuestionNumber = (direction)=>{
-    var newQuestionNumber = questionNumber
+    var newQuestionNumber = questionIndexNumber
 
-if(direction === 'add'){
+if(direction === 'add' && questionIndexNumber <= props.quiz.length ){
   return  modifyQuestionNumber(newQuestionNumber + 1)
 
-} else if(direction === 'subtract'){
+} else if(direction === 'subtract'  && questionIndexNumber > -1){
  return   modifyQuestionNumber(newQuestionNumber - 1)
 
 }else{
@@ -27,67 +26,81 @@ if(direction === 'add'){
 
 
 const currentQuestion = (theNumber) =>{
-    const theQuestion = props.quiz.filter((f)=>{
+    return props.quiz.filter((f)=>{
         return props.quiz.indexOf(f) === theNumber
     })
-return theQuestion
+
+    
 }
 
-const correctSpot = (questionNumber < props.quizLength) 
+
 const addQuizObject = (quizObject)=>{
-const newQuizArray = quizResponses
+const newQuizArray = quizResponses.filter((f)=>f.guess !== 'no guess')
 newQuizArray.push(quizObject)
 changeQuizResponses(newQuizArray)
 console.log(quizResponses)
 }
 
 
-    return (correctSpot) ? (
-        <div>Quiz page
+    return  (
+        <div>
             
         
         <button
             onClick={()=>{
-                console.log('current Question', currentQuestion(0))
+                console.log('current Question', currentQuestion(questionIndexNumber))
 
                 console.log('props', props)
                 console.log('quiz Array', quizResponses)
-                console.log('quiz length Array', quizLengthArray)
-
+                
             }}
             >quiz page fns test</button>
 
+            <Button onClick={()=>{
+                if(props.questionNumber < 1 ){
+                    return alert('too far back')
+                } else{
+                    props.changeQuestionNumber('subtract')
+                }
+                
+                console.log('quiz length', props.quizLength)
+                console.log('question Number', props.questionNumber)
+    
+            }}>
+                previous
+                </Button>
+    
+    
+    
+            <Button onClick={()=>{
+                props.changeQuestionNumber('add')
+                console.log('quiz length', props.quizLength)
+                console.log('question Number', props.questionNumber)
+            }}>
+                next
+                </Button>
+
 {
 
-
-    currentQuestion(questionNumber).map((m)=>{
+  currentQuestion(questionIndexNumber).map((m)=>{
     
-        return(
-            <QuestionCard 
-            key={props.quiz.indexOf(m)}
-            quizLength={props.quiz.length}
-            changeQuestionNumber={changeQuestionNumber}
-            questionNumber={questionNumber}
-              
-             question={m.question} 
-             correctAnswer={m.correct_answer} 
-             addQuizObject={addQuizObject} />
-        )
-    })
+    return(
+        <QuestionCard 
+        key={props.quiz.indexOf(m)}
+        quizLength={props.quiz.length}
+        changeQuestionNumber={changeQuestionNumber}
+        questionNumber={questionIndexNumber}
+          
+         question={m.question} 
+         correctAnswer={m.correct_answer} 
+         addQuizObject={addQuizObject} />
+    )
+})
+    
 }
       
         </div> 
-    ) : (
-         <div>
-         <button onClick={(e)=>{
-             e.preventDefault()
-             const placeNumber = props.quizLength -1
-             modifyQuestionNumber(placeNumber)
-             console.log(questionNumber)
-         }}>go back</button>
-
-         <button>get results</button>
-        </div>)
+    ) 
 }
 
 export default QuizPage

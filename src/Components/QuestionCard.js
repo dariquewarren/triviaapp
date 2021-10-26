@@ -22,7 +22,7 @@ function QuestionCard(props) {
      
    }
 
-  // create function that makes and submits an object with the following Keys
+  // create  an object with the following Keys
   // Question, correctAnswer, guess, isGuessCorrect
   const qObject = {
     question: props.question ,
@@ -35,29 +35,7 @@ function QuestionCard(props) {
     return (
         <div>
         
-        <Button onClick={()=>{
-            if(props.questionNumber < 1 ){
-                return alert('too far back')
-            } else{
-                props.changeQuestionNumber('subtract')
-            }
-            
-            console.log('quiz length', props.quizLength)
-            console.log('question Number', props.questionNumber)
 
-        }}>
-            previous
-            </Button>
-
-
-
-        <Button onClick={()=>{
-            props.changeQuestionNumber('add')
-            console.log('quiz length', props.quizLength)
-            console.log('question Number', props.questionNumber)
-        }}>
-            next
-            </Button>
         <header> 
             <Card >
             QUESTION NUMBER {props.questionNumber + 1}
@@ -72,6 +50,8 @@ function QuestionCard(props) {
             e.preventDefault()
             checkAnswer(checkboxResult)
             props.addQuizObject(qObject)
+            props.changeQuestionNumber('add')
+           
         }}>
  
         <Button
