@@ -60,7 +60,7 @@ function QuestionCard(props) {
             </Button>
         <header> 
             <Card >
-            QUESTION NUMBER {props.questionNumber}
+            QUESTION NUMBER {props.questionNumber + 1}
             <Card.Header>
         
             <p>{props.question}</p>

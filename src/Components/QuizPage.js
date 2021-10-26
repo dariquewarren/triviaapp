@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect} from 'react'
 import QuestionCard from './QuestionCard'
 function QuizPage(props) {
 
@@ -33,13 +33,14 @@ const currentQuestion = (theNumber) =>{
 return theQuestion
 }
 
-const correctSpot = (questionNumber < props.quizLength +1) 
+const correctSpot = (questionNumber < props.quizLength) 
 const addQuizObject = (quizObject)=>{
 const newQuizArray = quizResponses
 newQuizArray.push(quizObject)
 changeQuizResponses(newQuizArray)
 console.log(quizResponses)
 }
+
 
     return (correctSpot) ? (
         <div>Quiz page
@@ -80,7 +81,9 @@ console.log(quizResponses)
          <div>
          <button onClick={(e)=>{
              e.preventDefault()
-             modifyQuestionNumber(props.quizLength)
+             const placeNumber = props.quizLength -1
+             modifyQuestionNumber(placeNumber)
+             console.log(questionNumber)
          }}>go back</button>
 
          <button>get results</button>
