@@ -27,7 +27,7 @@ const [quizData, setQuizData] = useState([])
   }}
    > Test Data Button</button>
    </header>
-<QuizPage quiz={quizData}/>
+<QuizPage quiz={quizData} quizLength={quizData.length}/>
 
     </div>
   );
