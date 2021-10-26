@@ -33,7 +33,7 @@ const currentQuestion = (theNumber) =>{
 return theQuestion
 }
 
-
+const correctSpot = (questionNumber < props.quizLength +1) 
 const addQuizObject = (quizObject)=>{
 const newQuizArray = quizResponses
 newQuizArray.push(quizObject)
@@ -41,9 +41,11 @@ changeQuizResponses(newQuizArray)
 console.log(quizResponses)
 }
 
-    return (
+    return (correctSpot) ? (
         <div>Quiz page
-            <button
+            
+        
+        <button
             onClick={()=>{
                 console.log('current Question', currentQuestion(0))
 
@@ -62,7 +64,7 @@ console.log(quizResponses)
         return(
             <QuestionCard 
             key={props.quiz.indexOf(m)}
-
+            quizLength={props.quiz.length}
             changeQuestionNumber={changeQuestionNumber}
             questionNumber={questionNumber}
               
@@ -72,28 +74,17 @@ console.log(quizResponses)
         )
     })
 }
- 
+      
+        </div> 
+    ) : (
+         <div>
+         <button onClick={(e)=>{
+             e.preventDefault()
+             modifyQuestionNumber(props.quizLength)
+         }}>go back</button>
 
-
-            {
-                props.quiz.map((m)=>{
-    
-                    return(
-                        <QuestionCard 
-                    
-                        changeQuestionNumber={changeQuestionNumber}
-                        questionNumber={questionNumber}
-                         key={props.quiz.indexOf(m)} 
-                         question={m.question} 
-                         correctAnswer={m.correct_answer} 
-                         addQuizObject={addQuizObject} />
-                    )
-                })
-            }
-
-            
-        </div>
-    )
+         <button>get results</button>
+        </div>)
 }
 
 export default QuizPage

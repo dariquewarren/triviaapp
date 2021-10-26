@@ -34,11 +34,33 @@ function QuestionCard(props) {
   
     return (
         <div>
+        
         <Button onClick={()=>{
-            props.changeQuestionNumber('subtract')}}>previous</Button>
-        <Button onClick={()=>props.changeQuestionNumber('add')}>next</Button>
+            if(props.questionNumber < 1 ){
+                return alert('too far back')
+            } else{
+                props.changeQuestionNumber('subtract')
+            }
+            
+            console.log('quiz length', props.quizLength)
+            console.log('question Number', props.questionNumber)
+
+        }}>
+            previous
+            </Button>
+
+
+
+        <Button onClick={()=>{
+            props.changeQuestionNumber('add')
+            console.log('quiz length', props.quizLength)
+            console.log('question Number', props.questionNumber)
+        }}>
+            next
+            </Button>
         <header> 
             <Card >
+            QUESTION NUMBER {props.questionNumber}
             <Card.Header>
         
             <p>{props.question}</p>
