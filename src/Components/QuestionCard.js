@@ -5,8 +5,8 @@ import Button from 'react-bootstrap/Button'
 function QuestionCard(props) {
    
    const [userGuess, changeUserGuess] = useState('NO GUESS SELECTED')
-   const [guessTrue, changeGuessTrue] = useState(false)
-   const [guessFalse, changeGuessFalse] = useState(false)
+   const [isGuessSubmitted, changeIsGuessSubmitted] = useState(false)
+   
 
 
    const handleUserGuess=(guess)=>{
@@ -23,9 +23,9 @@ function QuestionCard(props) {
 
   // create  an object with the following Keys
   // Question, correctAnswer, guess, isGuessCorrect
-  const qObject = {
+  const qObject =  {
     question: props.question ,
-    correctAnswer:props.correctAnswer ,
+    correctAnswer: props.correct_answer ,
     userGuess: userGuess ,
     isGuessCorrect: (userGuess.toLowerCase() === props.correct_answer.toLowerCase())
     
@@ -36,6 +36,14 @@ function QuestionCard(props) {
         
 
         <header> 
+        <button
+        onClick={()=>{
+            props.handleQuizAnswers(qObject)
+        }}
+        >
+        handleQuizAnswers
+        </button>
+
             <button
             onClick={()=>{
                 console.log('qCard props', props)
@@ -47,10 +55,14 @@ function QuestionCard(props) {
             <Card>
             <Card.Header>{props.question}</Card.Header>
             <h3>Your Guess: {userGuess}</h3>
+<h3>Conditionally render the form based on isGuessSubmitted {(isGuessSubmitted)? 'yuppppp' : 'nope'}</h3>
+{}
             <Form 
             onSubmit={(e)=>{
                 e.preventDefault()
-                console.log('fquestion object', qObject)
+                
+                props.handleQuizAnswers(qObject)
+                changeIsGuessSubmitted(true)
             }
             }
             >
