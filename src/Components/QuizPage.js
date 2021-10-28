@@ -16,10 +16,11 @@ function QuizPage(props) {
             const newAnswerArray = quizAnswers
             newAnswerArray.push(quizObject)
             setQuizAnswers(newAnswerArray)
+            console.log('quiz object from handle quiz answers',quizObject)
+            console.log('quizAnswers',quizAnswers)
         }
        
-        console.log('quiz object from handle quiz answers',quizObject)
-        console.log('quizAnswers',quizAnswers)
+       
 
         }
 
@@ -27,9 +28,11 @@ function QuizPage(props) {
         <div>
       <button
       onClick={()=>{
-          console.log('props', props)
+          console.log('quizpagedata props', props)
+        console.log('quiz answers array', quizAnswers )
       }}
       >QuizPage data button</button>
+
       {
           (props.quiz)
            ? 
@@ -42,6 +45,7 @@ function QuizPage(props) {
            :
            <p>no quiz data for the card</p>
       }
+
         </div> 
     ) 
 }

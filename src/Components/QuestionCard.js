@@ -55,7 +55,7 @@ function QuestionCard(props) {
             <Card>
             <Card.Header>{props.question}</Card.Header>
             <h3>Your Guess: {userGuess}</h3>
-<h3>Conditionally render the form based on isGuessSubmitted {(isGuessSubmitted)? 'yuppppp' : 'nope'}</h3>
+<h3>{(isGuessSubmitted)? 'SUBMITTED GUESS' : ''}</h3>
 {(isGuessSubmitted) ? 'guess Submitted' :  <Form 
 onSubmit={(e)=>{
     e.preventDefault()
