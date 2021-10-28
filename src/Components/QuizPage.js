@@ -6,7 +6,11 @@ function QuizPage(props) {
 
     return  (
         <div>
-      
+      <button
+      onClick={()=>{
+          console.log('props', props)
+      }}
+      >QuizPage data button</button>
         </div> 
     ) 
 }
