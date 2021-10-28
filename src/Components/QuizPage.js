@@ -11,6 +11,18 @@ function QuizPage(props) {
           console.log('props', props)
       }}
       >QuizPage data button</button>
+      {
+          (props.quiz)
+           ? 
+          props.quiz.map((m)=>{
+              
+            return(
+                <QuestionCard key={m.question} {...m}/>
+            )
+          })
+           :
+           <p>no quiz data for the card</p>
+      }
         </div> 
     ) 
 }

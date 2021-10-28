@@ -11,13 +11,13 @@ function QuestionCard(props) {
 
   // create  an object with the following Keys
   // Question, correctAnswer, guess, isGuessCorrect
-  const qObject = {
-    question: props.question ,
-    correctAnswer:props.correctAnswer ,
-    guess: realGuess ,
-    isGuessCorrect: (realGuess.toLowerCase() === props.correctAnswer.toLowerCase()),
+//   const qObject = {
+//     question: props.question ,
+//     correctAnswer:props.correctAnswer ,
+//     guess: realGuess ,
+//     isGuessCorrect: (realGuess.toLowerCase() === props.correctAnswer.toLowerCase()),
     
-  }
+//   }
   
     return (
         <div>
