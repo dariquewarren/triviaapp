@@ -10,7 +10,7 @@ function QuestionCard(props) {
 
 
    const handleUserGuess=(guess)=>{
-       console.log
+       console.log('log the guess', guess)
    }
 
   // create  an object with the following Keys
@@ -49,6 +49,7 @@ function QuestionCard(props) {
             <Form.Check onClick={(e)=>{
                 console.log('true checkbox target value',e.target.value)
                 changeUserGuess(e.target.value)
+                handleUserGuess(e.target.value)
             }} id='trueCheckbox' type='checkbox' label='True' value='True'/>
             <Form.Check onClick={(e)=>{
                 console.log('true checkbox target value',e.target.value)
