@@ -56,34 +56,38 @@ function QuestionCard(props) {
             <Card.Header>{props.question}</Card.Header>
             <h3>Your Guess: {userGuess}</h3>
 <h3>Conditionally render the form based on isGuessSubmitted {(isGuessSubmitted)? 'yuppppp' : 'nope'}</h3>
-{}
-            <Form 
-            onSubmit={(e)=>{
-                e.preventDefault()
-                
-                props.handleQuizAnswers(qObject)
-                changeIsGuessSubmitted(true)
-            }
-            }
-            >
-            <Button onClick={(e)=>{
-                e.preventDefault()
-                console.log('true checkbox target value',e.target.value)
-                handleUserGuess(true)
-            }}
-             id='trueCheckbox'  value='True' 
-            style={(userGuess === 'True' ) ?{backgroundColor: 'blue'} :{backgroundColor: 'grey', }}
-            >True</Button>
-            <Button onClick={(e)=>{
-                e.preventDefault()
-                console.log('true checkbox target value',e.target.value)
-                handleUserGuess(false)
+{(isGuessSubmitted) ? 'guess Submitted' :  <Form 
+onSubmit={(e)=>{
+    e.preventDefault()
+    if(userGuess === 'NO GUESS SELECTED'){
+      return  alert('selct a guess')
+    }else{
+        props.handleQuizAnswers(qObject)
+        changeIsGuessSubmitted(true)
+    }
+    
+}
+}
+>
+<Button onClick={(e)=>{
+    e.preventDefault()
+    console.log('true checkbox target value',e.target.value)
+    handleUserGuess(true)
+}}
+ id='trueCheckbox'  value='True' 
+style={(userGuess === 'True' ) ?{backgroundColor: 'blue'} :{backgroundColor: 'grey', }}
+>True</Button>
+<Button onClick={(e)=>{
+    e.preventDefault()
+    console.log('true checkbox target value',e.target.value)
+    handleUserGuess(false)
 
-            }}  
-            style={(userGuess === 'False' ) ?{backgroundColor: 'blue'} :{backgroundColor: 'grey', }}
-            value='False'>False</Button>
-            <Button type='submit'> Submit/ data test</Button>
-            </Form>
+}}  
+style={(userGuess === 'False' ) ?{backgroundColor: 'blue'} :{backgroundColor: 'grey', }}
+value='False'>False</Button>
+<Button type='submit'> Submit/ data test</Button>
+</Form> }
+           
             </Card>
         </div>
     )
