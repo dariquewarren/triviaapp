@@ -33,30 +33,12 @@ function QuestionCard(props) {
   
     return (
         <div >
-        
-
-        <header> 
-        <button
-        onClick={()=>{
-            props.handleQuizAnswers(qObject)
-        }}
-        >
-        handleQuizAnswers
-        </button>
-
-            <button
-            onClick={()=>{
-                console.log('qCard props', props)
-            }}
-            >
-            qCard Data
-            </button>
-            </header>
-            <Card>
-            <Card.Header>{props.question}</Card.Header>
-            <h3>Your Guess: {userGuess}</h3>
-<h3>{(isGuessSubmitted)? 'SUBMITTED GUESS' : ''}</h3>
-{(isGuessSubmitted) ? 'guess Submitted' :  <Form 
+               
+          
+         
+{(isGuessSubmitted) ? 'guess Submitted' :  
+<Card style={{border: '4px solid black'}}>
+<Form 
 onSubmit={(e)=>{
     e.preventDefault()
     if(userGuess === 'NO GUESS SELECTED'){
@@ -69,6 +51,9 @@ onSubmit={(e)=>{
 }
 }
 >
+<Card.Header>{props.question}</Card.Header>
+<h3>Your Guess: {userGuess}</h3>
+<h3>{(isGuessSubmitted)? 'SUBMITTED GUESS' : ''}</h3>
 <Button onClick={(e)=>{
     e.preventDefault()
     console.log('true checkbox target value',e.target.value)
@@ -86,9 +71,28 @@ style={(userGuess === 'True' ) ?{backgroundColor: 'blue'} :{backgroundColor: 'gr
 style={(userGuess === 'False' ) ?{backgroundColor: 'blue'} :{backgroundColor: 'grey', }}
 value='False'>False</Button>
 <Button type='submit'> Submit/ data test</Button>
-</Form> }
-           
+</Form> 
+<button
+onClick={(e)=>{
+    e.preventDefault()
+    props.handleQuizAnswers(qObject)
+}}
+>
+handleQuizAnswers
+</button>
+
+    <button
+    onClick={(e)=>{
+        e.preventDefault()
+        console.log('qCard props', props)
+    }}
+    >
+    qCard Data
+    </button>
             </Card>
+}
+
+
         </div>
     )
 }

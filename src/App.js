@@ -30,16 +30,10 @@ useEffect(()=>{
   onClick={()=>{
     
    getTriviaData()
-   
+   console.log(quizData)
  }}
   > start quiz/ get data</button>
-  <button
-  onClick={()=>{
-    console.log(quizData)
-  }}
-  >
-  log data
-  </button>
+  
    </header>
 
    <QuizPage quiz={quizData} quizAnswers={quizAnswers} />

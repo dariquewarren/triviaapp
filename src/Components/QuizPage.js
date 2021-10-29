@@ -56,7 +56,7 @@ function QuizPage(props) {
       }
 
 {
-  (showResultsPage) ? <ResultsPage quizResults={'quizresults array'}/> : <p></p> 
+  (showResultsPage) ? <ResultsPage quizResults={quizAnswers}/> : <p></p> 
 }
 
         </div> 
