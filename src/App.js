@@ -6,6 +6,8 @@ import QuizPage from './Components/QuizPage';
 function App() {
 const [quizData, setQuizData] = useState([])
 const [quizAnswers, setQuizAnswers] = useState([])
+const [questionsAnswered, addQuestionsAnswered] = useState(0)
+   
    const getTriviaData =()=>{
      fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean').then((response)=>{
       return response.json()
@@ -29,14 +31,18 @@ useEffect(()=>{
   onClick={()=>{
     setQuizData([])
     setQuizAnswers([])
+    addQuestionsAnswered(0)
    getTriviaData()
    console.log(quizData)
  }}
-  > start quiz/ new quiz</button>
+  >{(quizData) ? 'new quiz': 'start quiz' }  </button>
   
    </header>
 
-   <QuizPage quiz={quizData} quizAnswers={quizAnswers} setQuizAnswers={setQuizAnswers} />
+   <QuizPage 
+   quiz={quizData} quizAnswers={quizAnswers} setQuizAnswers={setQuizAnswers}
+   questionsAnswered={questionsAnswered} addQuestionsAnswered={addQuestionsAnswered}
+   />
     </div>
   );
 }

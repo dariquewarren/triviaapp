@@ -7,7 +7,6 @@ function QuizPage(props) {
 
     
     const [showResultsPage, toggleShowResultsPage] = useState(false)
-    const [questionsAnswered, addQuestionsAnswered] = useState(0)
    
  
   
@@ -38,7 +37,7 @@ function QuizPage(props) {
 
     return  (
         <div>
-        questions answered {questionsAnswered}/{(props.quiz) ? props.quiz.length : 'undefined'}
+        questions answered {props.questionsAnswered}/{(props.quiz) ? props.quiz.length : 'undefined'}
       <button
       onClick={()=>{
           console.log('quizpagedata props', props)
@@ -60,8 +59,8 @@ function QuizPage(props) {
 
             return(
                 <QuestionCard key={m.question} handleQuizAnswers={handleQuizAnswers} 
-                questionsAnswered={questionsAnswered}
-                  addQuestionsAnswered={addQuestionsAnswered} 
+                questionsAnswered={props.questionsAnswered}
+                  addQuestionsAnswered={props.addQuestionsAnswered} 
                   toggleShowResultsPage={toggleShowResultsPage}
                   quizLength={props.quiz.length}
                  {...m}/>
