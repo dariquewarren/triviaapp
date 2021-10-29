@@ -7,8 +7,20 @@ function QuestionCard(props) {
    const [userGuess, changeUserGuess] = useState('NO GUESS SELECTED')
    const [isGuessSubmitted, changeIsGuessSubmitted] = useState(false)
    
+   
+// when the form is submitted i want to do the following
+// 1 check if the amount of questions answered is equal to the quiz length
+// 2 if amount is not equal to quiz lenght:
+        // ---add quiz object yes
+        // -- add 1 to amount of questions answrred yes
+        // -change guess submissiion to true yes
+    // if amount is equal to quiz length:
+    // ---add quiz object yes
+        // -- add 1 to amount of questions answrred yes
+        // -change guess submissiion to true yes
+        // --- LASTLY... set the show results page state to true
 
-
+       
    const handleUserGuess=(guess)=>{
        if(guess){
            console.log('HUG...guess is true')
@@ -30,7 +42,13 @@ function QuestionCard(props) {
     isGuessCorrect: (userGuess.toLowerCase() === props.correct_answer.toLowerCase())
     
   }
-  
+  useEffect(()=>{
+if(props.questionsAnswered === props.quizLength){
+    props.toggleShowResultsPage(true)
+}else{
+    return
+}
+  },[props.questionsAnswered])
     return (
         <div >
                
@@ -47,7 +65,7 @@ onSubmit={(e)=>{
         props.handleQuizAnswers(qObject)
         props.addQuestionsAnswered(props.questionsAnswered + 1)
         changeIsGuessSubmitted(true)
-    }
+        }
     
 }
 }
@@ -76,6 +94,7 @@ value='False'>False</Button>
 <button
 onClick={(e)=>{
     e.preventDefault()
+    props.checkQuizProgress()
     props.handleQuizAnswers(qObject)
 }}
 >

@@ -49,21 +49,23 @@ function QuizPage(props) {
       >showResults{showResultsPage}</button>
 
       {
-          (props.quiz)
+          (props.quiz && showResultsPage === false)
            ? 
           props.quiz.map((m)=>{
 
             return(
-                <QuestionCard key={m.question} handleQuizAnswers={handleQuizAnswers} addQuestionsAnswered={addQuestionsAnswered} questionsAnswered={questionsAnswered} {...m}/>
+                <QuestionCard key={m.question} handleQuizAnswers={handleQuizAnswers} 
+                questionsAnswered={questionsAnswered}
+                  addQuestionsAnswered={addQuestionsAnswered} 
+                  toggleShowResultsPage={toggleShowResultsPage}
+                  quizLength={props.quiz.length}
+                 {...m}/>
             )
           })
            :
-           <p>no quiz data for the card</p>
+           <ResultsPage quizResults={quizAnswers}/>
       }
 
-{
-  (showResultsPage) ? <ResultsPage quizResults={quizAnswers}/> : <p>no data</p> 
-}
 
         </div> 
     ) 
