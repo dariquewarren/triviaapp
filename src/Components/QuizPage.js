@@ -32,8 +32,8 @@ function QuizPage(props) {
         }
 
         useEffect(()=>{
-          
-        })
+
+        },[props.quizData])
 
 
     return  (
