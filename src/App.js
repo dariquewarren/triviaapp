@@ -5,7 +5,7 @@ import QuestionCard from './Components/QuestionCard';
 import QuizPage from './Components/QuizPage';
 function App() {
 const [quizData, setQuizData] = useState()
-
+const [quizAnswers, setQuizAnswers] = useState([])
    const getTriviaData =()=>{
      fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean').then((response)=>{
       return response.json()
@@ -35,7 +35,7 @@ useEffect(()=>{
   
    </header>
 
-   <QuizPage quiz={quizData}  />
+   <QuizPage quiz={quizData} quizAnswers={quizAnswers} setQuizAnswers={setQuizAnswers} />
     </div>
   );
 }
