@@ -1,7 +1,11 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import ResultsCard from './ResultsCard'
 
 function ResultsPage(props) {
+    useEffect(()=>{
+
+    }, [props.quizResults])
+
     return (
         <div>
 <button

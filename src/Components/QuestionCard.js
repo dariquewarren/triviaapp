@@ -36,7 +36,7 @@ function QuestionCard(props) {
                
           
          
-{(isGuessSubmitted) ? 'guess Submitted' :  
+{(isGuessSubmitted) ? <h3 style={{backgroundColor: 'grey', border: '4px solid green'}}>Guess submitted</h3> :  
 <Card style={{border: '4px solid black'}}>
 <Form 
 onSubmit={(e)=>{
@@ -45,6 +45,7 @@ onSubmit={(e)=>{
       return  alert('selct a guess')
     }else{
         props.handleQuizAnswers(qObject)
+        props.addQuestionsAnswered(props.questionsAnswered + 1)
         changeIsGuessSubmitted(true)
     }
     

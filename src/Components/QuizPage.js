@@ -7,11 +7,16 @@ function QuizPage(props) {
 
     const [quizAnswers, setQuizAnswers] = useState([])
     const [showResultsPage, toggleShowResultsPage] = useState(false)
-
+    const [questionsAnswered, addQuestionsAnswered] = useState(0)
+   
+ 
+  
     const handleQuizAnswers =(quizObject)=>{
 
         if(quizObject.userGuess ==='NO GUESS SELECTED'){
           return  alert('select a guess first please')
+        } else if(quizAnswers.includes(quizObject)){
+          return alert('dupe detected hopefully stopped')
         } else {
                     // setup a way to remove duplicates from the array before displaying it
 
@@ -28,6 +33,7 @@ function QuizPage(props) {
 
     return  (
         <div>
+        questions answered {questionsAnswered}/{(props.quiz) ? props.quiz.length : 'undefined'}
       <button
       onClick={()=>{
           console.log('quizpagedata props', props)
@@ -37,7 +43,7 @@ function QuizPage(props) {
 
       <button
       onClick={()=>{
-        toggleShowResultsPage(!showResultsPage)
+        toggleShowResultsPage(!!!showResultsPage)
           console.log('results page toggled to', showResultsPage )
       }}
       >showResults{showResultsPage}</button>
@@ -48,7 +54,7 @@ function QuizPage(props) {
           props.quiz.map((m)=>{
 
             return(
-                <QuestionCard key={m.question} handleQuizAnswers={handleQuizAnswers} {...m}/>
+                <QuestionCard key={m.question} handleQuizAnswers={handleQuizAnswers} addQuestionsAnswered={addQuestionsAnswered} questionsAnswered={questionsAnswered} {...m}/>
             )
           })
            :
@@ -56,7 +62,7 @@ function QuizPage(props) {
       }
 
 {
-  (showResultsPage) ? <ResultsPage quizResults={quizAnswers}/> : <p></p> 
+  (showResultsPage) ? <ResultsPage quizResults={quizAnswers}/> : <p>no data</p> 
 }
 
         </div> 
