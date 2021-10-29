@@ -1,10 +1,12 @@
 import React, { useState, useEffect} from 'react'
 import Button from 'react-bootstrap/Button'
 import QuestionCard from './QuestionCard'
+import ResultsPage from './ResultsPage'
+
 function QuizPage(props) {
 
     const [quizAnswers, setQuizAnswers] = useState([])
-
+    const [showResultsPage, toggleShowResultsPage] = useState(false)
 
     const handleQuizAnswers =(quizObject)=>{
 
@@ -33,6 +35,13 @@ function QuizPage(props) {
       }}
       >QuizPage data button</button>
 
+      <button
+      onClick={()=>{
+        toggleShowResultsPage(!showResultsPage)
+          console.log('results page toggled to', showResultsPage )
+      }}
+      >showResults{showResultsPage}</button>
+
       {
           (props.quiz)
            ? 
@@ -45,6 +54,10 @@ function QuizPage(props) {
            :
            <p>no quiz data for the card</p>
       }
+
+{
+  (showResultsPage) ? <ResultsPage quizResults={'quizresults array'}/> : <p></p> 
+}
 
         </div> 
     ) 
