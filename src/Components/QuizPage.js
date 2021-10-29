@@ -31,6 +31,11 @@ function QuizPage(props) {
 
         }
 
+        useEffect(()=>{
+          
+        })
+
+
     return  (
         <div>
         questions answered {questionsAnswered}/{(props.quiz) ? props.quiz.length : 'undefined'}
