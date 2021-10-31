@@ -91,15 +91,6 @@ style={(userGuess === 'False' ) ?{backgroundColor: 'blue'} :{backgroundColor: 'g
 value='False'>False</Button>
 <Button type='submit'> Submit/ data test</Button>
 </Form> 
-<button
-onClick={(e)=>{
-    e.preventDefault()
-    props.checkQuizProgress()
-    props.handleQuizAnswers(qObject)
-}}
->
-handleQuizAnswers
-</button>
 
     <button
     onClick={(e)=>{
