@@ -89,6 +89,8 @@ onSubmit={(e)=>{
  id='trueCheckbox'  value='True' 
 style={(userGuess === 'True' ) ?{backgroundColor: 'green', color: 'whitesmoke', fontSize: '1rem', width:'50%'} :{backgroundColor: 'black', color: 'whitesmoke', width:'25%' }}
 >True</Button>
+
+
 <Button onClick={(e)=>{
     e.preventDefault()
     console.log('true checkbox target value',e.target.value)
