@@ -34,6 +34,7 @@ useEffect(()=>{
     setQuizData([])
     setQuizAnswers([])
     addQuestionsAnswered(0)
+    toggleShowResultsPage(false)
    getTriviaData()
    console.log(quizData)
  }}
