@@ -65,6 +65,8 @@ onSubmit={(e)=>{
         props.handleQuizAnswers(qObject)
         props.addQuestionsAnswered(props.questionsAnswered + 1)
         changeIsGuessSubmitted(true)
+        console.log('qCard props', props)
+
         }
     
 }
@@ -92,14 +94,7 @@ value='False'>False</Button>
 <Button type='submit'> Submit/ data test</Button>
 </Form> 
 
-    <button
-    onClick={(e)=>{
-        e.preventDefault()
-        console.log('qCard props', props)
-    }}
-    >
-    qCard Data
-    </button>
+    
             </Card>
 }
 
