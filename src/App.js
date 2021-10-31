@@ -10,7 +10,7 @@ const [questionsAnswered, addQuestionsAnswered] = useState(0)
 const [showResultsPage, toggleShowResultsPage] = useState(false)
 
 // at some point I want different quiz buttons to select different quizzes based on params available like difficulty, amount of questions, category and whether or not the options are strings or boolean
-
+// suggestion: copy the dropdowns on the opendtb website in the api docs
    const getTriviaData =()=>{
      fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean').then((response)=>{
       return response.json()
