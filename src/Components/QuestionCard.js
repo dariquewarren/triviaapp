@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react'
 import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+
 function QuestionCard(props) {
    
-   const [userGuess, changeUserGuess] = useState('NO GUESS SELECTED')
+   const [userGuess, changeUserGuess] = useState('SELECT AN ANSWER')
    const [isGuessSubmitted, changeIsGuessSubmitted] = useState(false)
    
    
@@ -50,16 +51,21 @@ if(props.questionsAnswered === props.quizLength){
 }
   },[props.questionsAnswered])
     return (
-        <div >
+        <div style={{justifyItems: 'center', marginLeft: 'auto', marginRight: 'auto', width:'100%', marginTop: '3px', marginBottom: '3px'}}>
                
           
-         
-{(isGuessSubmitted) ? <h3 style={{backgroundColor: 'grey', border: '4px solid green'}}>Guess submitted</h3> :  
-<Card style={{border: '4px solid black'}}>
+     
+       {(isGuessSubmitted) ? <h3 style={{backgroundColor: 'grey', border: '4px solid green'}}>Guess submitted</h3> :  
+<Card style={{border: '4px solid black', marginLeft: 'auto', marginRight: 'auto', width:'65%', backgroundColor: 'red', color: 'whitesmoke'}}>
+
+<Card.Header style={{fontSize: '1.5rem', backgroundColor:'black'}}>Q {props.questionNumber} : {props.question}</Card.Header>
+<h3 style={{fontSize: '1rem', color: 'black'}}> {(userGuess === 'SELECT AN ANSWER')? `` : `Your Guess: ${userGuess}`} </h3>
+
+
 <Form 
 onSubmit={(e)=>{
     e.preventDefault()
-    if(userGuess === 'NO GUESS SELECTED'){
+    if(userGuess === 'SELECT AN ANSWER'){
       return  alert('selct a guess')
     }else{
         props.handleQuizAnswers(qObject)
@@ -72,8 +78,8 @@ onSubmit={(e)=>{
 }
 }
 >
-<Card.Header>{props.question}</Card.Header>
-<h3>Your Guess: {userGuess}</h3>
+<Button disabled={(userGuess === 'SELECT AN ANSWER')? true: false} type='submit' style={(userGuess === 'SELECT AN ANSWER')? {borderRadius: '40%', height: '5rem', width: '5rem', backgroundColor: 'grey', color:'whitesmoke'}: {borderRadius: '40%', height: '5rem', width: '5rem', backgroundColor: 'green', color:'whitesmoke'} }>{(userGuess === 'SELECT AN ANSWER') ?'Select Your Guess' : 'Submit' }</Button>
+
 <h3>{(isGuessSubmitted)? 'SUBMITTED GUESS' : ''}</h3>
 <Button onClick={(e)=>{
     e.preventDefault()
@@ -81,7 +87,7 @@ onSubmit={(e)=>{
     handleUserGuess(true)
 }}
  id='trueCheckbox'  value='True' 
-style={(userGuess === 'True' ) ?{backgroundColor: 'blue'} :{backgroundColor: 'grey', }}
+style={(userGuess === 'True' ) ?{backgroundColor: 'green', color: 'whitesmoke', fontSize: '1rem', width:'50%'} :{backgroundColor: 'black', color: 'whitesmoke', width:'25%' }}
 >True</Button>
 <Button onClick={(e)=>{
     e.preventDefault()
@@ -89,15 +95,14 @@ style={(userGuess === 'True' ) ?{backgroundColor: 'blue'} :{backgroundColor: 'gr
     handleUserGuess(false)
 
 }}  
-style={(userGuess === 'False' ) ?{backgroundColor: 'blue'} :{backgroundColor: 'grey', }}
+style={(userGuess === 'False' ) ?{backgroundColor: 'green', color: 'whitesmoke', fontSize: '1rem', width: '50%'} :{backgroundColor: 'black', color: 'whitesmoke', width: '25%' }}
 value='False'>False</Button>
-<Button type='submit'> Submit/ data test</Button>
 </Form> 
 
     
             </Card>
 }
-
+      
 
         </div>
     )

@@ -58,7 +58,7 @@ function QuizPage(props) {
           props.quiz.map((m)=>{
 
             return(
-                <QuestionCard key={m.question} handleQuizAnswers={handleQuizAnswers} 
+                <QuestionCard key={m.question} questionNumber={props.quiz.indexOf(m) + 1} handleQuizAnswers={handleQuizAnswers} 
                 questionsAnswered={props.questionsAnswered}
                   addQuestionsAnswered={props.addQuestionsAnswered} 
                   toggleShowResultsPage={toggleShowResultsPage}
@@ -70,6 +70,7 @@ function QuizPage(props) {
            <ResultsPage quizResults={props.quizAnswers}/>
       }
 
+      <h1> *dR. zOIDBERG VOICE* A FOOTER SHOULD GO HERE MAYBE? </h1>
 
         </div> 
     ) 
