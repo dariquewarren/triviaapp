@@ -7,6 +7,8 @@ function App() {
 const [quizData, setQuizData] = useState([])
 const [quizAnswers, setQuizAnswers] = useState([])
 const [questionsAnswered, addQuestionsAnswered] = useState(0)
+const [showResultsPage, toggleShowResultsPage] = useState(false)
+
    
    const getTriviaData =()=>{
      fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean').then((response)=>{
@@ -42,6 +44,7 @@ useEffect(()=>{
    <QuizPage 
    quiz={quizData} quizAnswers={quizAnswers} setQuizAnswers={setQuizAnswers}
    questionsAnswered={questionsAnswered} addQuestionsAnswered={addQuestionsAnswered}
+   showResultsPage={showResultsPage} toggleShowResultsPage={toggleShowResultsPage}
    />
     </div>
   );

@@ -6,7 +6,6 @@ import ResultsPage from './ResultsPage'
 function QuizPage(props) {
 
     
-    const [showResultsPage, toggleShowResultsPage] = useState(false)
    
  
   
@@ -47,13 +46,13 @@ function QuizPage(props) {
 
       <button
       onClick={()=>{
-        toggleShowResultsPage(!!!showResultsPage)
-          console.log('results page toggled to', showResultsPage )
+        props.toggleShowResultsPage(!!!props.showResultsPage)
+          console.log('results page toggled to', props.showResultsPage )
       }}
-      >showResults{showResultsPage}</button>
+      >showResults{props.quizDatashowResultsPage}</button>
 
       {
-          (props.quiz && showResultsPage === false)
+          (props.quiz && props.showResultsPage === false)
            ? 
           props.quiz.map((m)=>{
 
@@ -61,7 +60,7 @@ function QuizPage(props) {
                 <QuestionCard key={m.question} questionNumber={props.quiz.indexOf(m) + 1} handleQuizAnswers={handleQuizAnswers} 
                 questionsAnswered={props.questionsAnswered}
                   addQuestionsAnswered={props.addQuestionsAnswered} 
-                  toggleShowResultsPage={toggleShowResultsPage}
+                  toggleShowResultsPage={props.toggleShowResultsPage}
                   quizLength={props.quiz.length}
                  {...m}/>
             )
