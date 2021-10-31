@@ -35,7 +35,7 @@ useEffect(()=>{
    getTriviaData()
    console.log(quizData)
  }}
-  >{(quizData) ? 'new quiz': 'start quiz' }  </button>
+  >{(quizData.length < 1) ? 'start quiz' : 'new quiz'  }  </button>
   
    </header>
 
