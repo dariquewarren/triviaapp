@@ -2,6 +2,9 @@ import React, {useEffect} from 'react'
 import ResultsCard from './ResultsCard'
 
 function ResultsPage(props) {
+
+// write function to remove duplicates from quiz results array and return a mappable arry
+
     useEffect(()=>{
 
     }, [props.quizResults])
