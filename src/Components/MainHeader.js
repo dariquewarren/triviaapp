@@ -121,7 +121,7 @@ const [showType, toggleShowType] = useState(false)
                          key={m.id} value={m.id} 
                          onClick={(e)=>{
                              e.preventDefault()
-                             setQCategory(e.target.value)
+                             setQCategory(m.id)
                              setCategoryName(m.name)
                              console.log('name, value',e.target.value, m.name)
                          }}

@@ -24,7 +24,10 @@ const [showResultsPage, toggleShowResultsPage] = useState(false)
       type
     }
     console.log('customParams', customParams)
-     fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean').then((response)=>{
+  const quizCustomURL = `https://opentdb.com/api.php?amount=${customParams.amount}&category=${customParams.category}&difficulty=${customParams.difficulty}&type=${customParams.type}`
+    const originalURL ='https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean'
+   console.log('quizCustomURL',quizCustomURL)
+    fetch(originalURL).then((response)=>{
       return response.json()
      }).then((data)=>{
        const realData = data.results
