@@ -134,6 +134,9 @@ const MultipleChoiceCard=(props)=>{
     return (
         <div>
         Multiple Choice Card
+        <button
+        onClick={()=>console.log('multiple choice props', props)}
+        >Log MChoice Data</button>
         </div>
     )
 }
