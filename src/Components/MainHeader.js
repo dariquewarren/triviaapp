@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 // at some point I want different quiz buttons to select different quizzes based on params available like difficulty, amount of questions, category and whether or not the options are strings or boolean
 // suggestion: copy the dropdowns on the opendtb website in the api docs
@@ -6,6 +6,14 @@ import React from 'react'
 // OR conditionally render necessary props into the same card (because styling is till tedious for me lol)
 
 function MainHeader(props) {
+const [qAmount, setQAmount] = useState(10)
+const [qCategory, setQCategory] = useState(9)
+const [qDifficulty, setQDifficulty] = useState('easy')
+const [qType, setQType] = useState('boolean')
+
+
+    // set states for the following to be used with props.gettriviadata function
+        //amount, category,difficulty,type
     return (
         <div>
             <h1>Main header</h1>
@@ -16,7 +24,7 @@ function MainHeader(props) {
               props.setQuizAnswers([])
               props.addQuestionsAnswered(0)
               props.toggleShowResultsPage(false)
-             props.getTriviaData()
+             props.getTriviaData(qAmount, qCategory, qDifficulty, qType)
              console.log(props.quizData)
            }}
             >{(props.quizData.length < 1) ? 'start quiz' : 'new quiz'  }  </button>
@@ -25,6 +33,7 @@ function MainHeader(props) {
             <button># of Questions</button>
             <button>multipleChoice/boolean</button>
             <button>Difficulty</button>
+            
             </row>
         </div>
     )
