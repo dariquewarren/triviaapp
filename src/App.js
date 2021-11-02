@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import QuestionCard from './Components/QuestionCard';
 import QuizPage from './Components/QuizPage';
+import MainHeader from './Components/MainHeader';
+
 function App() {
 const [quizData, setQuizData] = useState([])
 const [quizAnswers, setQuizAnswers] = useState([])
@@ -32,18 +34,17 @@ useEffect(()=>{
   return (
     <div className="App">
    <header>
-   <button
-  onClick={()=>{
-    setQuizData([])
-    setQuizAnswers([])
-    addQuestionsAnswered(0)
-    toggleShowResultsPage(false)
-   getTriviaData()
-   console.log(quizData)
- }}
-  >{(quizData.length < 1) ? 'start quiz' : 'new quiz'  }  </button>
   
    </header>
+<MainHeader 
+getTriviaData={getTriviaData} quizData={quizData} setQuizData={setQuizData} 
+quizAnswers={quizAnswers} setQuizAnswers={setQuizAnswers} 
+questionsAnswered={questionsAnswered} addQuestionsAnswered={addQuestionsAnswered}
+showResultsPage={showResultsPage} toggleShowResultsPage={toggleShowResultsPage}
+/>
+
+
+
 
    <QuizPage 
    quiz={quizData} quizAnswers={quizAnswers} setQuizAnswers={setQuizAnswers}

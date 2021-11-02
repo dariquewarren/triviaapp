@@ -38,6 +38,7 @@ function QuestionCard(props) {
   // Question, correctAnswer, guess, isGuessCorrect
   const qObject =  {
     question: props.question ,
+    questionNumber: props.questionNumber,
     correctAnswer: props.correct_answer ,
     userGuess: userGuess ,
     isGuessCorrect: (userGuess.toLowerCase() === props.correct_answer.toLowerCase())
@@ -52,15 +53,23 @@ if(props.questionsAnswered === props.quizLength){
   },[props.questionsAnswered])
     return (
         <div style={{justifyItems: 'center', marginLeft: 'auto', marginRight: 'auto', width:'100%', marginTop: '3px', marginBottom: '3px'}}>
-               
-          
-     
-       {(isGuessSubmitted) ? <h3 style={{backgroundColor: 'grey', border: '4px solid green'}}>Guess submitted</h3> :  
-<Card style={{border: '4px solid black', marginLeft: 'auto', marginRight: 'auto', width:'65%', backgroundColor: 'red', color: 'whitesmoke'}}>
+            
+       {(isGuessSubmitted) 
+        ?
+<h3 
+style={{backgroundColor: 'grey', border: '4px solid green'}}>
+Guess submitted
+</h3> 
+
+         :  
+
+<Card 
+style={
+    {border: '4px solid black', marginLeft: 'auto', marginRight: 'auto', width:'65%', backgroundColor: 'red', color: 'whitesmoke'}
+        }>
 
 <Card.Header style={{fontSize: '1.5rem', backgroundColor:'black'}}>Q {props.questionNumber} : {props.question}</Card.Header>
 <h3 style={{fontSize: '1rem', color: 'black'}}> {(userGuess === 'SELECT AN ANSWER')? `` : `Your Guess: ${userGuess}`} </h3>
-
 
 <Form 
 onSubmit={(e)=>{

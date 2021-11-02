@@ -3,11 +3,12 @@ import ResultsCard from './ResultsCard'
 
 function ResultsPage(props) {
 
-// write function to remove duplicates from quiz results array and return a mappable arry
+// write function to remove duplicates from quiz results array and return a mappable array
+// check if necessary aka do this way later in the construction progress lol
 
     useEffect(()=>{
-
-    }, [props.quizResults])
+    
+}, [props.quizResults])
 
     return (
         <div>
@@ -20,7 +21,7 @@ onClick={()=>{
     (props.quizResults) 
     ? 
     props.quizResults.map((m)=>{
-        return (
+        return !m.isCorrectAnswer && (
             <ResultsCard key={props.quizResults.indexOf(m)} {...m}/>
         )
     })
