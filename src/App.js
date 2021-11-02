@@ -15,7 +15,15 @@ const [showResultsPage, toggleShowResultsPage] = useState(false)
 // suggestion: copy the dropdowns on the opendtb website in the api docs
 // may have to make two seperate question Cards to accomodate new data 
 // OR conditionally render necessary props into the same card (because styling is till tedious for me lol)
-   const getTriviaData =()=>{
+   const getTriviaData =(amount, category,difficulty,type)=>{
+
+    const customParams ={
+      amount,
+      category,
+      difficulty,
+      type
+    }
+    console.log('customParams', customParams)
      fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean').then((response)=>{
       return response.json()
      }).then((data)=>{
