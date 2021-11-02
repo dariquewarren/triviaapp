@@ -26,7 +26,7 @@ const [showType, toggleShowType] = useState(false)
 
         // consider putting the buttons in the header behond a settings menu
     return (
-        <div>
+        <div style={{border:'5px dashed grey'}}>
             <h1>Main header</h1>
             <row>
              # Of Questions{qAmount} Category: {categoryName} Difficulty:{qDifficulty} Type: {qType}
@@ -44,7 +44,9 @@ const [showType, toggleShowType] = useState(false)
            }}
             >{(props.quizData.length < 1) ? 'start quiz' : 'new quiz'  }  </button>
             
-            <button># of Questions</button>
+            <button
+            onClick={()=>toggleShowAmount(!showAmount)}
+            > {(showAmount) ? 'hide # of Questions' : 'show # of Questions'} </button>
 
 
             <button onClick={()=>{
@@ -62,42 +64,56 @@ const [showType, toggleShowType] = useState(false)
             }}>
             {(showCategory)? 'Hide Categories': 'Show Categories'}
             </button>       
-
+           
+            <button
+            onClick={()=>{
+                toggleShowDifficulty(!showDifficulty)
+             }}
+             
+            >{(showDifficulty) ? 'hide Difficulty Options': 'show Difficulty Options'}</button>
+            
             <button
             onClick={()=>{
                 toggleShowType(!showType)
             }}
-            >Select Type</button>
+            > {(showType) ? 'Hide Select Type' : 'show Select Type'}</button>
 
-            {
-                (showType)
-                ?
-                <div>
-                <button
-                value={'boolean'}
-                onClick={(e)=>{
-                    setQType(e.target.value)
-                }}
-                >True or False</button>
-                <button
-                value={'multiple'}
-                onClick={(e)=>{
-                    setQType(e.target.value)
-                }}
-                >Multiple Choice</button>
-
-                </div>
-                :
-                <p></p>
-            }
-            <button>Difficulty</button>
-            
             </row>
+
+             {
+                 (showAmount)
+                 ?
+                 <div style={{border: '2px solid yellow'}}>
+                 <h2> Select Amount</h2>
+                 <button
+                 value={5}
+                onClick={(e)=>{
+                    setQAmount(e.target.value)
+                }}
+                 >5 (five)</button>
+                 <button
+                 value={10}
+                 onClick={(e)=>{
+                     setQAmount(e.target.value)
+                 }}
+                 >10 (ten)</button>
+                 <button
+                 value={15}
+                 onClick={(e)=>{
+                     setQAmount(e.target.value)
+                 }}
+                 >15 (Fifteen)</button>
+
+                 </div>
+                 :
+                 <p></p>
+             }
+            
             {
                 (showCategory) 
                 ?
                  <div style={{border: '3px solid black'}}>
-                  <h2> Select A Category</h2>
+                 <h2> Select A Category</h2>
                   { categoryList.trivia_categories.map((m)=>{
                      return(
                         
@@ -116,6 +132,59 @@ const [showType, toggleShowType] = useState(false)
                  </div>:
                 <p></p>
             }
+{
+    (showDifficulty)
+    ?
+<div style={{border: '3px solid green'}}>
+<h2> Select A Difficulty</h2>
+<button
+value={'easy'}
+onClick={(e)=>{
+   setQDifficulty(e.target.value) 
+}}
+>easy</button>
+<button
+value={'medium'}
+onClick={(e)=>{
+    setQDifficulty(e.target.value) 
+ }} 
+>medium</button>
+<button
+value={'hard'}
+onClick={(e)=>{
+    setQDifficulty(e.target.value) 
+ }}
+ 
+>hard</button>
+
+</div>
+    :
+    <p></p>
+}
+
+            {
+                (showType)
+                ?
+                <div style={{border: '2px solid red'}}>
+                <h2> Select A Type</h2>
+                <button
+                value={'boolean'}
+                onClick={(e)=>{
+                    setQType(e.target.value)
+                }}
+                >True or False</button>
+                <button
+                value={'multiple'}
+                onClick={(e)=>{
+                    setQType(e.target.value)
+                }}
+                >Multiple Choice</button>
+
+                </div>
+                :
+                <p></p>
+            }
+
         </div>
     )
 }
