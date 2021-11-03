@@ -182,8 +182,14 @@ useEffect(()=>{
     </h3> 
      :
 
-     <Card>
-     <Card.Header>{props.question}</Card.Header>
+     <Card
+     style={
+        {border: '4px solid black', marginLeft: 'auto', marginRight: 'auto', width:'65%', backgroundColor: 'red', color: 'whitesmoke'}
+            }
+     >
+     <Card.Header style={{fontSize: '1.5rem', backgroundColor:'black'}}>Q {props.questionNumber} : {decodeURI(props.question)}</Card.Header>
+     <h3 style={{fontSize: '1rem', color: 'black'}}> {(userGuess === 'SELECT AN ANSWER')? `` : `Your Guess: ${userGuess}`} </h3>
+     
      <Form
      onSubmit={(e)=>{
          e.preventDefault()
@@ -199,22 +205,53 @@ useEffect(()=>{
                  }}
      >
     
-     {
-         realAnswersArray.map((m)=>{
-             return (
-                 <Button 
-                 key={realAnswersArray.indexOf(m)} value={m} 
-                 style={(props.correct_answer === m) ? {border: '5px solid green'}: {border: '5px dashed red'}}
-                 onClick={(e)=>{
-                     e.preventDefault()
-                     changeUserGuess(e.target.value)
-                     console.log('wrong answers button', e.target.value)
-                 }}
-                 >{m}</Button>
-             )
-         })
-     }
 
+<div
+style={{border: '2px solid yellow', display:'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: '50%', marginLeft: 'auto', marginRight: 'auto'}}
+>
+<Button 
+value={realAnswersArray[0]} 
+style={{ width:'50%'}}
+onClick={(e)=>{
+    e.preventDefault()
+    changeUserGuess(e.target.value)
+    console.log('wrong answers button', e.target.value)
+}}
+>{realAnswersArray[0]}</Button>
+<Button 
+value={realAnswersArray[1]} 
+style={ (userGuess === realAnswersArray[1]) ?{ backgroundColor: 'green', width:'50%'}:{ backgroundColor: 'grey', width:'50%'} }
+onClick={(e)=>{
+    e.preventDefault()
+    changeUserGuess(e.target.value)
+    console.log('wrong answers button', e.target.value)
+}}
+>{realAnswersArray[1]}</Button>
+
+</div>
+<div style={{border: '2px solid red',display:'flex', flexDirection: 'row',alignItems: 'center', justifyContent: 'center', width: '50%', marginLeft: 'auto', marginRight: 'auto'}}>
+<Button 
+value={realAnswersArray[2]} 
+style={ (userGuess === realAnswersArray[2]) ?{ backgroundColor: 'green', width:'50%'}:{ backgroundColor: 'grey', width:'50%'} }
+onClick={(e)=>{
+    e.preventDefault()
+    changeUserGuess(e.target.value)
+    console.log('wrong answers button', e.target.value)
+}}
+>{realAnswersArray[2]}</Button>
+<Button 
+value={realAnswersArray[3]} 
+style={ (userGuess === realAnswersArray[3]) ?{ backgroundColor: 'green', width:'50%'}:{ backgroundColor: 'grey', width:'50%'} }
+onClick={(e)=>{
+    e.preventDefault()
+    changeUserGuess(e.target.value)
+    console.log('wrong answers button', e.target.value)
+}}
+>{realAnswersArray[3]}</Button>
+
+</div>
+
+    
      <Button variant='primary' type='submit'>Submit</Button>
      </Form>
      </Card>
