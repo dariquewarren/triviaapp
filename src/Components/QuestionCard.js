@@ -130,15 +130,103 @@ const BooleanCard=(props)=>{
 }
 
 const MultipleChoiceCard=(props)=>{
+    const [realAnswersArray, setRealAnswersArray] = useState([])
+    const [userGuess, changeUserGuess] = useState('SELECT AN ANSWER')
+    const [isGuessSubmitted, changeIsGuessSubmitted] = useState(false)
+
+const answersArray = [...new Set(props.incorrect_answers)]
+    answersArray.push(props.correct_answer)
+
+   const shuffleArray =(arr)=> {
+        arr.sort(()=>{
+          return  Math.random() - 0.5
+        })
+        const uniqueArr = [...new Set(answersArray)]
+      console.log(uniqueArr);
+      setRealAnswersArray(uniqueArr)
+return uniqueArr
+      }
+      
+      const qObject =  {
+        question: props.question ,
+        questionNumber: props.questionNumber,
+        correctAnswer: props.correct_answer ,
+        userGuess: userGuess ,
+        isGuessCorrect: (userGuess.toLowerCase() === props.correct_answer.toLowerCase())
+        
+      }
+
+useEffect(()=>{
+    shuffleArray(answersArray);
+    if(props.questionsAnswered === props.quizLength){
+        props.toggleShowResultsPage(true)
+    }else{
+        return
+    }
+    
+    
+      
+    console.log(realAnswersArray, props.correct_answer)
+}, [props.questionsAnswered])
+
 
     return (
         <div>
         Multiple Choice Card
-        <Card>
-        <Card.Header>{props.question}</Card.Header>
-        </Card>
+
+{
+    (isGuessSubmitted) ? 
+    <h3 
+    style={{backgroundColor: 'grey', border: '4px solid green'}}>
+    Guess submitted
+    </h3> 
+     :
+
+     <Card>
+     <Card.Header>{props.question}</Card.Header>
+     <Form
+     onSubmit={(e)=>{
+         e.preventDefault()
+         if(userGuess === 'SELECT AN ANSWER'){
+           return  alert('selct a guess')
+         }else{
+             props.handleQuizAnswers(qObject)
+             props.addQuestionsAnswered(props.questionsAnswered + 1)
+             changeIsGuessSubmitted(true)
+             console.log('qCard props', props)
+     
+             }
+                 }}
+     >
+    
+     {
+         realAnswersArray.map((m)=>{
+             return (
+                 <Button 
+                 key={realAnswersArray.indexOf(m)} value={m} 
+                 style={(props.correct_answer === m) ? {border: '5px solid green'}: {border: '5px dashed red'}}
+                 onClick={(e)=>{
+                     e.preventDefault()
+                     changeUserGuess(e.target.value)
+                     console.log('wrong answers button', e.target.value)
+                 }}
+                 >{m}</Button>
+             )
+         })
+     }
+
+     <Button variant='primary' type='submit'>Submit</Button>
+     </Form>
+     </Card>
+}
+
         <button
-        onClick={()=>console.log('multiple choice props', props)}
+        onClick={()=>{
+            console.log('multiple choice props', props)
+            console.log('userGuess', userGuess)
+            console.log('qObject', qObject)
+
+        }}
         >Log MChoice Data</button>
         </div>
     )
