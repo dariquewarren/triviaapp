@@ -78,7 +78,7 @@ const BooleanCard=(props)=>{
      {border: '4px solid black', marginLeft: 'auto', marginRight: 'auto', width:'65%', backgroundColor: 'red', color: 'whitesmoke'}
          }>
  
- <Card.Header style={{fontSize: '1.5rem', backgroundColor:'black'}}>Q {props.questionNumber} : {props.question}</Card.Header>
+ <Card.Header style={{fontSize: '1.5rem', backgroundColor:'black'}}>Q {props.questionNumber} : {decodeURI(props.question)}</Card.Header>
  <h3 style={{fontSize: '1rem', color: 'black'}}> {(userGuess === 'SELECT AN ANSWER')? `` : `Your Guess: ${userGuess}`} </h3>
  
  <Form 
