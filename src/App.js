@@ -23,7 +23,7 @@ const [showResultsPage, toggleShowResultsPage] = useState(false)
       difficulty,
       type
     }
-    const customURL = await'https://opentdb.com/api.php?' + 'amount=' + amount + '&category=' + category + '&difficulty=' + difficulty + '&type=' + type + '&encode=url3986'
+    const customURL = await'https://opentdb.com/api.php?' + 'amount=' + amount + '&category=' + category + '&difficulty=' + difficulty + '&type=' + type 
     console.log('customParams', customParams)
   const quizCustomURL = `https://opentdb.com/api.php?amount=${customParams.amount}&category=${customParams.category}&difficulty=${customParams.difficulty}&type=${customParams.type}`
     const originalURL ='https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean'
