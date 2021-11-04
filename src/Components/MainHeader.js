@@ -19,6 +19,8 @@ const [showCategory, toggleShowCategory] = useState(false)
 const [showAmount, toggleShowAmount] = useState(false)
 const [showDifficulty, toggleShowDifficulty] = useState(false)
 const [showType, toggleShowType] = useState(false)
+const [showSettings, toggleShowSettings] = useState(false)
+
 
 
     // set states for the following to be used with props.gettriviadata function
@@ -27,12 +29,9 @@ const [showType, toggleShowType] = useState(false)
         // consider putting the buttons in the header behond a settings menu
     return (
         <div style={{border:'5px dashed grey'}}>
-            <h1>Main header</h1>
-            <row>
-             # Of Questions{qAmount} Category: {categoryName} Difficulty:{qDifficulty} Type: {qType}
-            </row>
-            <br></br>
-            <row>
+       
+
+            <h1>Main header
             <button
             onClick={()=>{
               props.setQuizData([])
@@ -43,42 +42,92 @@ const [showType, toggleShowType] = useState(false)
              console.log(props.quizData)
            }}
             >{(props.quizData.length < 1) ? 'start quiz' : 'new quiz'  }  </button>
-            
-            <button
-            onClick={()=>toggleShowAmount(!showAmount)}
-            > {(showAmount) ? 'hide # of Questions' : 'show # of Questions'} </button>
 
 
-            <button onClick={()=>{
-                fetch('https://opentdb.com/api_category.php').then((response)=>{
-                    return response.json()
-                }).then((data)=>{
-                    setCategoryList(data)
-                    console.log('data', data)
-                    return data
-                }).then((data)=>{
-                    toggleShowCategory(!showCategory)
-
-                })
-            
-            }}>
-            {(showCategory)? 'Hide Categories': 'Show Categories'}
-            </button>       
+            </h1>
            
-            <button
-            onClick={()=>{
-                toggleShowDifficulty(!showDifficulty)
-             }}
-             
-            >{(showDifficulty) ? 'hide Difficulty Options': 'show Difficulty Options'}</button>
             
+            <h2>
+            Quiz settings: 
+            <Badge style={{border: '2px solid red', backgroundColor: 'red', color: 'whitesmoke'}} >{qAmount}</Badge>         
+            <Badge style={{border: '2px solid black', backgroundColor: 'black', color: 'whitesmoke'}} >{qDifficulty}</Badge>
+            <Badge style={{border: '2px solid green', backgroundColor: 'green', color: 'white'}} >{(qType === 'boolean')? 'true / false': qType}</Badge>
+            <Badge style={{border: '2px solid blue', backgroundColor: 'blue', color: 'white'}} >{categoryName}</Badge>
+ 
+            Questions</h2>
             <button
-            onClick={()=>{
-                toggleShowType(!showType)
-            }}
-            > {(showType) ? 'Hide Question Type' : 'show Question Type'}</button>
 
-            </row>
+            style={(showSettings) ? {backgroundColor: 'blue', color: 'black'} : {backgroundColor: 'red', color:'whitesmoke'} }
+
+            onClick={()=>{
+                console.log('show/hide settings')
+                if(showSettings){
+                    toggleShowDifficulty(false)
+                    toggleShowCategory(false)
+                    toggleShowType(false)
+                    toggleShowAmount(false)
+                    toggleShowSettings(!showSettings)
+
+                } else{
+                    toggleShowSettings(!showSettings)
+
+                }
+            }}
+            > {(showSettings) ? 'CLOSE QUIZ SETTINGS' : 'OPEN QUIZ SETTINGS'} </button>
+
+
+            
+
+            {
+                (showSettings) 
+                ? 
+                   
+           <row>
+            
+           <button
+           onClick={()=>toggleShowAmount(!showAmount)}
+           > {(showAmount) ? 'hide # of Questions' : 'show # of Questions'} </button>
+
+
+           <button onClick={()=>{
+               fetch('https://opentdb.com/api_category.php').then((response)=>{
+                   return response.json()
+               }).then((data)=>{
+                   setCategoryList(data)
+                   console.log('data', data)
+                   return data
+               }).then((data)=>{
+                   toggleShowCategory(!showCategory)
+
+               })
+           
+           }}>
+           {(showCategory)? 'Hide Categories': 'Show Categories'}
+           </button>       
+          
+           <button
+           onClick={()=>{
+               toggleShowDifficulty(!showDifficulty)
+            }}
+            
+           >{(showDifficulty) ? 'hide Difficulty Options': 'show Difficulty Options'}</button>
+           
+           <button
+           onClick={()=>{
+               toggleShowType(!showType)
+           }}
+           > {(showType) ? 'Hide Question Type' : 'show Question Type'}</button>
+
+           </row>
+
+                :
+<p></p>
+            }
+         
+
+
+
+
 
              {
                  (showAmount)
