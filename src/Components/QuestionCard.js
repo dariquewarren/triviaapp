@@ -211,7 +211,7 @@ style={{border: '2px solid yellow', display:'flex', flexDirection: 'row', alignI
 >
 <Button 
 value={realAnswersArray[0]} 
-style={{ width:'50%'}}
+style={ (userGuess === realAnswersArray[0]) ?{ backgroundColor: 'green', width:'50%'}:{ backgroundColor: 'grey', width:'50%'} }
 onClick={(e)=>{
     e.preventDefault()
     changeUserGuess(e.target.value)

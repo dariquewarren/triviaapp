@@ -76,7 +76,7 @@ const [showType, toggleShowType] = useState(false)
             onClick={()=>{
                 toggleShowType(!showType)
             }}
-            > {(showType) ? 'Hide Select Type' : 'show Select Type'}</button>
+            > {(showType) ? 'Hide Question Type' : 'show Question Type'}</button>
 
             </row>
 

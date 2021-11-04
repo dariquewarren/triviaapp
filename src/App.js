@@ -31,10 +31,19 @@ const [showResultsPage, toggleShowResultsPage] = useState(false)
     fetch(customURL).then((response)=>{
       return response.json()
      }).then((data)=>{
-       const realData = data.results
-       setQuizData(data.results)
-      console.log('results',data.results)
-      return realData
+
+       const testData = [{question: 'No Questions Available. Change Question Type. If that doesn\'t work, change a different quiz setting', correct_answer: 'none', incorrect_answer: 'none'}]
+       let realData = data.results
+       if(data.results.length < 1){
+        
+        return setQuizData(testData)
+
+       }else{
+        setQuizData(realData)
+        console.log('results',realData)
+        return realData
+       }
+       
       
      })
    }
