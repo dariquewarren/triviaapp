@@ -72,8 +72,7 @@ function QuizPage(props) {
            <ResultsPage quizResults={props.quizAnswers}/>
       }
 
-      <h1> *dR. zOIDBERG VOICE* A FOOTER SHOULD GO HERE MAYBE? </h1>
-
+     
         </div> 
     ) 
 }

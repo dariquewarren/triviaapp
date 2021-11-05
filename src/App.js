@@ -55,14 +55,14 @@ useEffect(()=>{
   return (
     <div className="App">
    <header>
-  
+   <MainHeader 
+   getTriviaData={getTriviaData} quizData={quizData} setQuizData={setQuizData} 
+   quizAnswers={quizAnswers} setQuizAnswers={setQuizAnswers} 
+   questionsAnswered={questionsAnswered} addQuestionsAnswered={addQuestionsAnswered}
+   showResultsPage={showResultsPage} toggleShowResultsPage={toggleShowResultsPage}
+   />
    </header>
-<MainHeader 
-getTriviaData={getTriviaData} quizData={quizData} setQuizData={setQuizData} 
-quizAnswers={quizAnswers} setQuizAnswers={setQuizAnswers} 
-questionsAnswered={questionsAnswered} addQuestionsAnswered={addQuestionsAnswered}
-showResultsPage={showResultsPage} toggleShowResultsPage={toggleShowResultsPage}
-/>
+
 
 
 
