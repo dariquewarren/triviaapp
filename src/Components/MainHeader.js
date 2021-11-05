@@ -41,9 +41,8 @@ const handleShow = () => setShow(true);
     return (
         <div style={{border:'5px dashed grey'}}>
         
-
-    <br></br>
-            <h1>Main header
+<h1>Quiz Whiz (by Darique Warren)</h1>
+                
             <button
             onClick={()=>{
               props.setQuizData([])
@@ -56,7 +55,6 @@ const handleShow = () => setShow(true);
             >{(props.quizData.length < 1) ? 'start quiz' : 'new quiz'  }  </button>
 
 
-            </h1>
             <button
 
             style={(showSettings)? {backgroundColor: 'red', color: 'black'} : {backgroundColor: 'blue', color: 'whitesmoke'}}
@@ -75,7 +73,7 @@ const handleShow = () => setShow(true);
 
                 }
             }}
-            > {(showSettings) ? 'CLOSE QUIZ SETTINGS' : 'OPEN QUIZ SETTINGS'} </button>
+            > {(showSettings) ? 'QUIZ SETTINGS' : 'QUIZ SETTINGS'} </button>
 
 
             
@@ -97,7 +95,7 @@ const handleShow = () => setShow(true);
             toggleShowType(false)
            }}
            style={(showAmount)? {backgroundColor: 'red', color: 'black'} : {backgroundColor: 'blue', color: 'whitesmoke'}}
-           > {(showAmount) ? 'hide # of Questions' : 'show # of Questions'} </button>
+           > {(showAmount) ? '# of Questions' : '# of Questions'} </button>
 
 
            <button
@@ -120,7 +118,7 @@ const handleShow = () => setShow(true);
            style={(showCategory) ? {backgroundColor: 'red', color: 'black'} : {backgroundColor: 'blue', color:'whitesmoke'} }
 
            >
-           {(showCategory)? 'Hide Categories': 'Show Categories'}
+           {(showCategory)? 'Categories': 'Categories'}
            </button>       
           
            <button
@@ -132,7 +130,7 @@ const handleShow = () => setShow(true);
             }}
             style={(showDifficulty)? {backgroundColor: 'red', color: 'black'} : {backgroundColor: 'blue', color: 'whitesmoke'}}
 
-           >{(showDifficulty) ? 'hide Difficulty Options': 'show Difficulty Options'}</button>
+           >{(showDifficulty) ? 'Difficulty': 'Difficulty'}</button>
            
            <button
            onClick={()=>{
@@ -143,12 +141,12 @@ const handleShow = () => setShow(true);
            }}
            style={(showType)? {backgroundColor: 'red', color: 'black'} : {backgroundColor: 'blue', color: 'whitesmoke'}}
 
-           > {(showType) ? 'Hide Question Type' : 'show Question Type'}</button>
+           > {(showType) ? 'Type' : 'Type'}</button>
            {
             (showAmount)
             ?
             <div style={{border: '2px solid yellow', width:'50%', height:'50%', marginLeft: 'auto', marginRight: 'auto'}}>
-            <h2> Select Amount</h2>
+            
             <Badge  as='button' 
             value={5}
             style={(qAmount && qAmount < 10)? {backgroundColor: 'green', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
@@ -176,7 +174,7 @@ const handleShow = () => setShow(true);
        {
            (showCategory) 
            ?
-           <div>                 <h2> Select A Category</h2>
+           <div>               
 
             <div style={{border: '3px solid red',overflow: 'scroll', width: '50%', height:'6rem', marginLeft: 'auto', marginRight: 'auto'}}>
             
@@ -209,7 +207,6 @@ const handleShow = () => setShow(true);
 <div style={{border: '3px solid green'}}>
 
 <div style={{border: '2px solid yellow', width:'50%', height:'50%', marginLeft: 'auto', marginRight: 'auto'}}>
-<h2> Select Difficulty</h2>
 <Badge  as='button' 
 value={'easy'}
 style={(qDifficulty === 'easy')? {backgroundColor: 'green', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
@@ -241,7 +238,6 @@ setQDifficulty(e.target.value)
            (showType)
            ?
            <div style={{border: '2px solid red'}}>
-           <h2> Select A Type</h2>
            <button
            value={'boolean'}
            style={(qType === 'boolean')? {backgroundColor: 'green', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
@@ -275,15 +271,14 @@ setQDifficulty(e.target.value)
 
 
 
-             
-            <h2>
-            Quiz settings: 
-            <Badge style={{border: '2px solid red', backgroundColor: 'red', color: 'whitesmoke'}} >{qAmount}</Badge>         
+             <div>
+             <Badge style={{border: '2px solid red', backgroundColor: 'red', color: 'whitesmoke'}} >{qAmount}</Badge>         
             <Badge style={{border: '2px solid black', backgroundColor: 'black', color: 'whitesmoke'}} >{qDifficulty}</Badge>
-            <Badge style={{border: '2px solid green', backgroundColor: 'green', color: 'white'}} >{(qType === 'boolean')? 'true / false': qType}</Badge>
-            <Badge style={{border: '2px solid blue', backgroundColor: 'blue', color: 'white'}} >{categoryName}</Badge>
- 
-            Questions</h2>
+            <Badge style={{border: '2px solid green', backgroundColor: 'green', color: 'white'}} >{(qType === 'boolean')? 'true / false': 'multiple choice' }</Badge>
+            <Badge style={{border: '2px solid blue', backgroundColor: 'blue', color: 'white'}} >{categoryName} Questions</Badge>
+            
+
+             </div>
         </div>
     )
 }
