@@ -10,22 +10,33 @@ const [quizData, setQuizData] = useState([])
 const [quizAnswers, setQuizAnswers] = useState([])
 const [questionsAnswered, addQuestionsAnswered] = useState(0)
 const [showResultsPage, toggleShowResultsPage] = useState(false)
+const [sessionToken, changeSessiontoken] = useState(0)
 
 // at some point I want different quiz buttons to select different quizzes based on params available like difficulty, amount of questions, category and whether or not the options are strings or boolean
 // suggestion: copy the dropdowns on the opendtb website in the api docs
 // may have to make two seperate question Cards to accomodate new data 
 // OR conditionally render necessary props into the same card (because styling is till tedious for me lol)
-   const getTriviaData = async (amount, category,difficulty,type)=>{
 
+const grabSessionToken = () =>{
+fetch('https://opentdb.com/api_token.php?command=request').then((response)=> {
+ return response.json()
+}).then((data)=>{
+  console.log('session response', data)
+  changeSessiontoken(data.token)
+  return data.token
+})
+}
+   const getTriviaData = async (amount, category,difficulty,type )=>{
+      grabSessionToken()
     const customParams ={
       amount,
       category,
       difficulty,
-      type
+      type,
+      token: sessionToken 
     }
-    const customURL = await'https://opentdb.com/api.php?' + 'amount=' + amount + '&category=' + category + '&difficulty=' + difficulty + '&type=' + type 
-    console.log('customParams', customParams)
-  const quizCustomURL = `https://opentdb.com/api.php?amount=${customParams.amount}&category=${customParams.category}&difficulty=${customParams.difficulty}&type=${customParams.type}`
+    const customURL = await'https://opentdb.com/api.php?' + 'amount=' + customParams.amount + '&category=' + customParams.category + '&difficulty=' + customParams.difficulty + '&type=' + customParams.type + '&token=' + customParams.token
+    console.log('customParams and token', customParams, sessionToken)
     const originalURL ='https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean'
    console.log('customURL',customURL)
     fetch(customURL).then((response)=>{
