@@ -1,9 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import Badge from 'react-bootstrap/Badge'
 import Button from 'react-bootstrap/Button'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Modal from 'react-bootstrap/Modal'
+import {FaCogs} from 'react-icons/fa'
+import { IconContext } from "react-icons"
 // at some point I want different quiz buttons to select different quizzes based on params available like difficulty, amount of questions, category and whether or not the options are strings or boolean
 // suggestion: copy the dropdowns on the opendtb website in the api docs
 // may have to make two seperate question Cards to accomodate new data 
@@ -19,6 +21,7 @@ const [qType, setQType] = useState('boolean')
 const [categoryName, setCategoryName] = useState('General Knowledge')
 const [categoryList, setCategoryList] = useState([])
 // show hide quiz parameter selection components
+
 const [showCategory, toggleShowCategory] = useState(false)
 const [showAmount, toggleShowAmount] = useState(false)
 const [showDifficulty, toggleShowDifficulty] = useState(false)
@@ -28,7 +31,8 @@ const [showSettings, toggleShowSettings] = useState(false)
 const [show, setShow] = useState(false);
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);
-
+const [quizThing, changeQuizThing] = useState(props.quizData)
+const quizDataReference = useRef(quizThing)
 
     // set states for the following to be used with props.gettriviadata function
         //amount, category,difficulty,type
@@ -36,8 +40,18 @@ const handleShow = () => setShow(true);
         // consider putting the buttons in the header behond a settings menu
 
     useEffect(()=>{
+        if(quizThing !== props.quizData){
+toggleShowSettings(false)
+toggleShowCategory(false)
+toggleShowAmount(false)
+toggleShowDifficulty(false)
+toggleShowType(false)
+console.log('not equal quizDataReference',quizDataReference )
+        }else{
+            console.log('equal quizDataReference', quizDataReference)
+        }
         
-    }, [show])
+    }, [show, props.quizData])
     return (
         <div style={{border:'5px dashed grey'}}>
         
@@ -52,28 +66,9 @@ const handleShow = () => setShow(true);
              props.getTriviaData(qAmount, qCategory, qDifficulty, qType)
              console.log(props.quizData)
            }}
-            >{(props.quizData.length < 1) ? 'start quiz' : 'new quiz'  }  </button>
+           style={{fontSize: '3rem', paddingRight: '2rem',backgroundColor: '#3b0161', color:'#2222222', height: '5rem', width:'5rem', borderRadius: '50%'}}
+            >{(props.quizData.length < 1) ? 'QUIZ....' : 'NEW QUIZ'  }  </button>
 
-
-            <button
-
-            style={(showSettings)? {backgroundColor: '#6e0303', color: 'black'} : {backgroundColor: '#000277', color: 'whitesmoke'}}
-
-            onClick={()=>{
-                console.log('show/hide settings')
-                if(showSettings){
-                    toggleShowDifficulty(false)
-                    toggleShowCategory(false)
-                    toggleShowType(false)
-                    toggleShowAmount(false)
-                    toggleShowSettings(!showSettings)
-
-                } else{
-                    toggleShowSettings(!showSettings)
-
-                }
-            }}
-            > {(showSettings) ? 'QUIZ SETTINGS' : 'QUIZ SETTINGS'} </button>
 
 
             
@@ -276,7 +271,24 @@ setQDifficulty(e.target.value)
             <Badge style={{border: '2px solid #212121', backgroundColor: '#212121', color: 'whitesmoke'}} >{qDifficulty}</Badge>
             <Badge style={{border: '2px solid #07701d', backgroundColor: '#07701d', color: 'white'}} >{(qType === 'boolean')? 'true / false': 'multiple choice' }</Badge>
             <Badge style={{border: '2px solid #000277', backgroundColor: '#000277', color: 'white'}} >{categoryName} Questions</Badge>
-            
+            <FaCogs
+            onClick={()=>{
+                console.log('show/hide settings')
+                if(showSettings){
+                    toggleShowDifficulty(false)
+                    toggleShowCategory(false)
+                    toggleShowType(false)
+                    toggleShowAmount(false)
+                    toggleShowSettings(!showSettings)
+
+                } else{
+                    toggleShowSettings(!showSettings)
+
+                }
+            }}
+
+            style={{fontSize: '2rem', paddingLeft: '2px', paddingRight: '2px', marginLeft: '2px', marginRight: '2px'}}
+            />
 
              </div>
         </div>
