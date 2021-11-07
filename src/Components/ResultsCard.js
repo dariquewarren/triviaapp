@@ -5,7 +5,7 @@ function ResultsCard(props) {
     return (
         <div
         style={
-            {backgroundColor: (props.isGuessCorrect)? 'green': 'red', border: (props.isGuessCorrect)?'4px solid green' :'4px solid red', marginLeft: 'auto', marginRight: 'auto', 
+            {backgroundColor: (props.isGuessCorrect)? '#07701d': '#6e0303', border: (props.isGuessCorrect)?'4px solid #07701d' :'4px solid red', marginLeft: 'auto', marginRight: 'auto', 
             width:'65%', color: 'whitesmoke'}}
         >
             <Card >
@@ -13,7 +13,7 @@ function ResultsCard(props) {
            
             <Card.Header style={
                 (props.isGuessCorrect) ? { fontSize: '1.5rem', backgroundColor: 'black', color: 'green', marginLeft: 'auto', marginRight: 'auto', 
-                width:'65%'} : {fontSize: '1.5rem', backgroundColor: 'black', color: 'red', marginLeft: 'auto', marginRight: 'auto', 
+                width:'65%'} : {fontSize: '1.5rem', backgroundColor: 'black', color: '#6e0303', marginLeft: 'auto', marginRight: 'auto', 
                 width:'65%'}
             }>
            <Badge pill style={{color:'whitesmoke', paddingLeft: '1px', paddingRight: '1px', paddingBottom: '1px'}}>
@@ -22,8 +22,8 @@ function ResultsCard(props) {
             </Card.Header>
 
             <Card.Header style={
-                (props.isGuessCorrect) ? {fontSize: '1.5rem', backgroundColor: 'black', color: 'green', marginLeft: 'auto', marginRight: 'auto', 
-                width:'65%'} : {fontSize: '1.5rem', backgroundColor: 'black', color: 'red', marginLeft: 'auto', marginRight: 'auto', 
+                (props.isGuessCorrect) ? {fontSize: '1.5rem', backgroundColor: 'black', color: '#07701d', marginLeft: 'auto', marginRight: 'auto', 
+                width:'65%'} : {fontSize: '1.5rem', backgroundColor: 'black', color: '#6e0303', marginLeft: 'auto', marginRight: 'auto', 
                 width:'65%'}
             }>
             <Badge pill style={{color:'whitesmoke', paddingLeft: '1px', paddingRight: '1px', paddingBottom: '1px'}}>

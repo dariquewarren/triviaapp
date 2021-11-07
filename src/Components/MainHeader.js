@@ -57,7 +57,7 @@ const handleShow = () => setShow(true);
 
             <button
 
-            style={(showSettings)? {backgroundColor: 'red', color: 'black'} : {backgroundColor: 'blue', color: 'whitesmoke'}}
+            style={(showSettings)? {backgroundColor: '#6e0303', color: 'black'} : {backgroundColor: '#000277', color: 'whitesmoke'}}
 
             onClick={()=>{
                 console.log('show/hide settings')
@@ -94,7 +94,7 @@ const handleShow = () => setShow(true);
             toggleShowDifficulty(false)
             toggleShowType(false)
            }}
-           style={(showAmount)? {backgroundColor: 'red', color: 'black'} : {backgroundColor: 'blue', color: 'whitesmoke'}}
+           style={(showAmount)? {backgroundColor: '#6e0303', color: 'black'} : {backgroundColor: '#000277', color: 'whitesmoke'}}
            > {(showAmount) ? '# of Questions' : '# of Questions'} </button>
 
 
@@ -115,7 +115,7 @@ const handleShow = () => setShow(true);
                })
            
            }}
-           style={(showCategory) ? {backgroundColor: 'red', color: 'black'} : {backgroundColor: 'blue', color:'whitesmoke'} }
+           style={(showCategory) ? {backgroundColor: '#6e0303', color: 'black'} : {backgroundColor: '#000277', color:'whitesmoke'} }
 
            >
            {(showCategory)? 'Categories': 'Categories'}
@@ -128,7 +128,7 @@ const handleShow = () => setShow(true);
             toggleShowCategory(false)
             toggleShowType(false)
             }}
-            style={(showDifficulty)? {backgroundColor: 'red', color: 'black'} : {backgroundColor: 'blue', color: 'whitesmoke'}}
+            style={(showDifficulty)? {backgroundColor: '#6e0303', color: 'black'} : {backgroundColor: '#000277', color: 'whitesmoke'}}
 
            >{(showDifficulty) ? 'Difficulty': 'Difficulty'}</button>
            
@@ -139,7 +139,7 @@ const handleShow = () => setShow(true);
             toggleShowCategory(false)
             toggleShowDifficulty(false)
            }}
-           style={(showType)? {backgroundColor: 'red', color: 'black'} : {backgroundColor: 'blue', color: 'whitesmoke'}}
+           style={(showType)? {backgroundColor: '#6e0303', color: 'black'} : {backgroundColor: '#000277', color: 'whitesmoke'}}
 
            > {(showType) ? 'Type' : 'Type'}</button>
            {
@@ -149,19 +149,19 @@ const handleShow = () => setShow(true);
             
             <Badge  as='button' 
             value={5}
-            style={(qAmount && qAmount < 10)? {backgroundColor: 'green', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
+            style={(qAmount && qAmount < 10)? {backgroundColor: '#07701d', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
             onClick={(e)=>{
                 setQAmount(e.target.value)
             }}> 5 </Badge>
             <Badge as='button' 
             value={10}
-            style={(qAmount == 10)? {backgroundColor: 'green', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
+            style={(qAmount == 10)? {backgroundColor: '#07701d', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
             onClick={(e)=>{
                 setQAmount(e.target.value)
             }}> 10 </Badge>
             <Badge  as='button' 
             value={15}
-            style={(qAmount > 10 && qAmount < 20)? {backgroundColor: 'green', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
+            style={(qAmount > 10 && qAmount < 20)? {backgroundColor: '#07701d', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
             onClick={(e)=>{
                 setQAmount(e.target.value)
             }}> 15 </Badge>
@@ -183,7 +183,7 @@ const handleShow = () => setShow(true);
                 return(
                    <Button 
                    key={m.id} value={m.id} 
-                   style={(categoryName === m.name)? {backgroundColor: 'green', color: 'white'} :{backgroundColor: 'grey', color: 'black'}}
+                   style={(categoryName === m.name)? {backgroundColor: '#07701d', color: 'white'} :{backgroundColor: 'grey', color: 'black'}}
                    onClick={(e)=>{
                        e.preventDefault()
                        setQCategory(m.id)
@@ -204,26 +204,26 @@ const handleShow = () => setShow(true);
 {
 (showDifficulty)
 ?
-<div style={{border: '3px solid green'}}>
+<div style={{border: '3px solid #07701d'}}>
 
 <div style={{border: '2px solid yellow', width:'50%', height:'50%', marginLeft: 'auto', marginRight: 'auto'}}>
 <Badge  as='button' 
 value={'easy'}
-style={(qDifficulty === 'easy')? {backgroundColor: 'green', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
+style={(qDifficulty === 'easy')? {backgroundColor: '#07701d', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
 onClick={(e)=>{
 setQDifficulty(e.target.value) 
 }}> Easy </Badge>
 
 <Badge as='button' 
 value={'medium'}
-style={(qDifficulty === 'medium')? {backgroundColor: 'green', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
+style={(qDifficulty === 'medium')? {backgroundColor: '#07701d', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
 
 onClick={(e)=>{
 setQDifficulty(e.target.value) 
 }}> Medium </Badge>
 <Badge  as='button' 
 value={'hard'}
-style={(qDifficulty === 'hard')? {backgroundColor: 'green', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
+style={(qDifficulty === 'hard')? {backgroundColor: '#07701d', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
 onClick={(e)=>{
 setQDifficulty(e.target.value) 
 }}> Hard </Badge>
@@ -240,7 +240,7 @@ setQDifficulty(e.target.value)
            <div style={{border: '2px solid red'}}>
            <button
            value={'boolean'}
-           style={(qType === 'boolean')? {backgroundColor: 'green', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
+           style={(qType === 'boolean')? {backgroundColor: '#07701d', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
 
            onClick={(e)=>{
                setQType(e.target.value)
@@ -248,7 +248,7 @@ setQDifficulty(e.target.value)
            >True or False</button>
            <button
            value={'multiple'}
-           style={(qType === 'multiple')? {backgroundColor: 'green', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
+           style={(qType === 'multiple')? {backgroundColor: '#07701d', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
 
            onClick={(e)=>{
                setQType(e.target.value)
@@ -272,10 +272,10 @@ setQDifficulty(e.target.value)
 
 
              <div>
-             <Badge style={{border: '2px solid red', backgroundColor: 'red', color: 'whitesmoke'}} >{qAmount}</Badge>         
-            <Badge style={{border: '2px solid black', backgroundColor: 'black', color: 'whitesmoke'}} >{qDifficulty}</Badge>
-            <Badge style={{border: '2px solid green', backgroundColor: 'green', color: 'white'}} >{(qType === 'boolean')? 'true / false': 'multiple choice' }</Badge>
-            <Badge style={{border: '2px solid blue', backgroundColor: 'blue', color: 'white'}} >{categoryName} Questions</Badge>
+             <Badge style={{border: '2px solid #6e0303', backgroundColor: '#6e0303', color: 'whitesmoke'}} >{qAmount}</Badge>         
+            <Badge style={{border: '2px solid #212121', backgroundColor: '#212121', color: 'whitesmoke'}} >{qDifficulty}</Badge>
+            <Badge style={{border: '2px solid #07701d', backgroundColor: '#07701d', color: 'white'}} >{(qType === 'boolean')? 'true / false': 'multiple choice' }</Badge>
+            <Badge style={{border: '2px solid #000277', backgroundColor: '#000277', color: 'white'}} >{categoryName} Questions</Badge>
             
 
              </div>
