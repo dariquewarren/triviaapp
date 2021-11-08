@@ -53,10 +53,13 @@ console.log('not equal quizDataReference',quizDataReference )
         
     }, [show, props.quizData])
     return (
-        <div style={{border:'5px dashed grey'}}>
+        <div style={{border:'5px dashed grey', backgroundColor: '#6e0303'}}>
         
 <h1>Quiz Whiz (by Darique Warren)</h1>
                 
+            <header
+            style={{display:'flex', flexDirection: 'row'}}
+            >
             <button
             onClick={()=>{
               props.setQuizData([])
@@ -66,10 +69,38 @@ console.log('not equal quizDataReference',quizDataReference )
              props.getTriviaData(qAmount, qCategory, qDifficulty, qType)
              console.log(props.quizData)
            }}
-           style={{fontSize: '3rem', paddingRight: '2rem',backgroundColor: '#3b0161', color:'#2222222', height: '5rem', width:'5rem', borderRadius: '50%'}}
-            >{(props.quizData.length < 1) ? 'QUIZ....' : 'NEW QUIZ'  }  </button>
+           style={{margin: 'auto',fontSize: '3rem', paddingLeft: '1rem', paddingRight: '2rem', backgroundColor: '#212121', color:'whitesmoke', height: '7rem', width:'15rem', display:'flex', justifyContent: 'center', alignItems:'center'}}
+            >{(props.quizData.length < 1) ? 'START' : 'GRAB QUIZ'  }  </button>
 
-
+            <Button
+            style={(showSettings)? 
+                {margin: 'auto',fontSize: '3rem', paddingLeft: '1rem', paddingRight: '2rem', backgroundColor: '#07701d', color:'whitesmoke', height: '7rem', width:'15rem', display:'flex', justifyContent: 'center', alignItems:'center'}
+                : 
+                {margin: 'auto',fontSize: '3rem', paddingLeft: '1rem', paddingRight: '2rem', backgroundColor: 'grey', color:'#212121', height: '7rem', width:'15rem', display:'flex', justifyContent: 'center', alignItems:'center'}
+                }
+        
+                onClick={()=>{
+                    console.log('show/hide settings')
+                    if(showSettings){
+                        toggleShowDifficulty(false)
+                        toggleShowCategory(false)
+                        toggleShowType(false)
+                        toggleShowAmount(false)
+                        toggleShowSettings(!showSettings)
+    
+                    } else{
+                        toggleShowSettings(!showSettings)
+    
+                    }
+                }}
+    
+              
+            >
+            <FaCogs
+            style={{height: '100%', width: '100%'}}
+              />
+              </Button>
+            </header>
 
             
             
@@ -89,8 +120,8 @@ console.log('not equal quizDataReference',quizDataReference )
             toggleShowDifficulty(false)
             toggleShowType(false)
            }}
-           style={(showAmount)? {backgroundColor: '#6e0303', color: 'black'} : {backgroundColor: '#000277', color: 'whitesmoke'}}
-           > {(showAmount) ? '# of Questions' : '# of Questions'} </button>
+           style={(showAmount)? {backgroundColor: '#07701d', color: 'whitesmoke', width:'100%',height:'2rem', fontSize:'1.5rem'} : {backgroundColor: '#212121', color: 'whitesmoke', width:'25%',height:'2rem', fontSize:'1.5rem'}}
+           > {(showAmount) ? '# of Questions' : `${qAmount} Qs`} </button>
 
 
            <button
@@ -110,10 +141,10 @@ console.log('not equal quizDataReference',quizDataReference )
                })
            
            }}
-           style={(showCategory) ? {backgroundColor: '#6e0303', color: 'black'} : {backgroundColor: '#000277', color:'whitesmoke'} }
+           style={(showCategory) ? {backgroundColor: '#07701d', color: 'whitesmoke', width:'100%',height:'2rem', fontSize:'1.5rem'} : {backgroundColor: '#212121', color:'whitesmoke', width:'25%',height:'2rem', fontSize:'1.5rem'} }
 
            >
-           {(showCategory)? 'Categories': 'Categories'}
+           {(showCategory)? 'CATEGORY': 'Q Type'}
            </button>       
           
            <button
@@ -123,7 +154,7 @@ console.log('not equal quizDataReference',quizDataReference )
             toggleShowCategory(false)
             toggleShowType(false)
             }}
-            style={(showDifficulty)? {backgroundColor: '#6e0303', color: 'black'} : {backgroundColor: '#000277', color: 'whitesmoke'}}
+            style={(showDifficulty)? {backgroundColor: '#07701d', color: 'whitesmoke', width:'100%',height:'2rem', fontSize:'1.5rem'} : {backgroundColor: '#212121', color: 'whitesmoke', width:'25%',height:'2rem', fontSize:'1.5rem'}}
 
            >{(showDifficulty) ? 'Difficulty': 'Difficulty'}</button>
            
@@ -134,9 +165,9 @@ console.log('not equal quizDataReference',quizDataReference )
             toggleShowCategory(false)
             toggleShowDifficulty(false)
            }}
-           style={(showType)? {backgroundColor: '#6e0303', color: 'black'} : {backgroundColor: '#000277', color: 'whitesmoke'}}
+           style={(showType)? {backgroundColor: '#07701d', color: 'whitesmoke', width:'100%',height:'2rem', fontSize:'1.5rem', border:'3px double #212121 ', paddingTop: '2px', paddingBottom:'2px'} : {backgroundColor: '#212121', color: 'whitesmoke', width:'25%', height:'2rem', fontSize: '1.5rem'}}
 
-           > {(showType) ? 'Type' : 'Type'}</button>
+           > {( qType === 'boolean') ? `TorF` : `M.C.`}</button>
            {
             (showAmount)
             ?
@@ -144,19 +175,19 @@ console.log('not equal quizDataReference',quizDataReference )
             
             <Badge  as='button' 
             value={5}
-            style={(qAmount && qAmount < 10)? {backgroundColor: '#07701d', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
+            style={(qAmount && qAmount < 10)? {backgroundColor: '#07701d', color: 'whitesmoke'} :{backgroundColor: '#212121', color: 'whitesmoke'}} 
             onClick={(e)=>{
                 setQAmount(e.target.value)
             }}> 5 </Badge>
             <Badge as='button' 
             value={10}
-            style={(qAmount == 10)? {backgroundColor: '#07701d', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
+            style={(qAmount == 10)? {backgroundColor: '#07701d', color: 'whitesmoke'} :{backgroundColor: '#3b0161', color: 'whitesmoke' }} 
             onClick={(e)=>{
                 setQAmount(e.target.value)
             }}> 10 </Badge>
             <Badge  as='button' 
             value={15}
-            style={(qAmount > 10 && qAmount < 20)? {backgroundColor: '#07701d', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
+            style={(qAmount > 10 && qAmount < 20)? {backgroundColor: '#07701d', color: 'whitesmoke'} :{backgroundColor: '#212121', color: 'whitesmoke'}} 
             onClick={(e)=>{
                 setQAmount(e.target.value)
             }}> 15 </Badge>
@@ -178,7 +209,7 @@ console.log('not equal quizDataReference',quizDataReference )
                 return(
                    <Button 
                    key={m.id} value={m.id} 
-                   style={(categoryName === m.name)? {backgroundColor: '#07701d', color: 'white'} :{backgroundColor: 'grey', color: 'black'}}
+                   style={(categoryName === m.name)? {backgroundColor: '#07701d', color: 'whitesmoke'} :{backgroundColor: 'grey', color: 'whitesmoke'}}
                    onClick={(e)=>{
                        e.preventDefault()
                        setQCategory(m.id)
@@ -204,14 +235,14 @@ console.log('not equal quizDataReference',quizDataReference )
 <div style={{border: '2px solid yellow', width:'50%', height:'50%', marginLeft: 'auto', marginRight: 'auto'}}>
 <Badge  as='button' 
 value={'easy'}
-style={(qDifficulty === 'easy')? {backgroundColor: '#07701d', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
+style={(qDifficulty === 'easy')? {backgroundColor: '#07701d', color: 'whitesmoke'} :{backgroundColor: 'grey', color: 'whitesmoke'}} 
 onClick={(e)=>{
 setQDifficulty(e.target.value) 
 }}> Easy </Badge>
 
 <Badge as='button' 
 value={'medium'}
-style={(qDifficulty === 'medium')? {backgroundColor: '#07701d', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
+style={(qDifficulty === 'medium')? {backgroundColor: '#07701d', color: 'whitesmoke'} :{backgroundColor: 'grey', color: 'whitesmoke'}} 
 
 onClick={(e)=>{
 setQDifficulty(e.target.value) 
@@ -235,7 +266,7 @@ setQDifficulty(e.target.value)
            <div style={{border: '2px solid red'}}>
            <button
            value={'boolean'}
-           style={(qType === 'boolean')? {backgroundColor: '#07701d', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
+           style={(qType === 'boolean')? {backgroundColor: '#07701d', color: 'whitesmoke'} :{backgroundColor: 'grey', color: 'whitesmoke'}} 
 
            onClick={(e)=>{
                setQType(e.target.value)
@@ -243,7 +274,7 @@ setQDifficulty(e.target.value)
            >True or False</button>
            <button
            value={'multiple'}
-           style={(qType === 'multiple')? {backgroundColor: '#07701d', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
+           style={(qType === 'multiple')? {backgroundColor: '#07701d', color: 'whitesmoke'} :{backgroundColor: 'grey', color: 'whitesmoke'}} 
 
            onClick={(e)=>{
                setQType(e.target.value)
@@ -268,10 +299,15 @@ setQDifficulty(e.target.value)
 
              <div>
              <Badge style={{border: '2px solid #6e0303', backgroundColor: '#6e0303', color: 'whitesmoke'}} >{qAmount}</Badge>         
-            <Badge style={{border: '2px solid #212121', backgroundColor: '#212121', color: 'whitesmoke'}} >{qDifficulty}</Badge>
-            <Badge style={{border: '2px solid #07701d', backgroundColor: '#07701d', color: 'white'}} >{(qType === 'boolean')? 'true / false': 'multiple choice' }</Badge>
-            <Badge style={{border: '2px solid #000277', backgroundColor: '#000277', color: 'white'}} >{categoryName} Questions</Badge>
-            <FaCogs
+            <Badge style={{border: '2px solid #212121', backgroundColor: '#6e0303', color: 'whitesmoke'}} >{qDifficulty}</Badge>
+            <Badge style={{border: '2px solid #07701d', backgroundColor: '#6e0303', color: 'whitesmoke'}} >{(qType === 'boolean')? 'true / false': 'multiple choice' }</Badge>
+            <Badge style={{border: '2px solid #000277', backgroundColor: '#6e0303', color: 'whitesmoke'}} >{categoryName} Questions</Badge>
+          <Badge
+          style={(showSettings)? {border: '2px solid #6e0303', backgroundColor: '#07701d', color: 'whitesmoke'} : {border: '2px solid #6e0303',backgroundColor:'grey', color: '#000000'} }
+          >
+
+          <FaCogs
+          
             onClick={()=>{
                 console.log('show/hide settings')
                 if(showSettings){
@@ -287,8 +323,8 @@ setQDifficulty(e.target.value)
                 }
             }}
 
-            style={{fontSize: '2rem', paddingLeft: '2px', paddingRight: '2px', marginLeft: '2px', marginRight: '2px'}}
             />
+            </Badge>
 
              </div>
         </div>
