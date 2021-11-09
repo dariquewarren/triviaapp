@@ -120,8 +120,8 @@ console.log('not equal quizDataReference',quizDataReference )
             toggleShowDifficulty(false)
             toggleShowType(false)
            }}
-           style={(showAmount)? {backgroundColor: '#07701d', color: 'whitesmoke', width:'100%',height:'2rem', fontSize:'1.5rem'} : {backgroundColor: '#212121', color: 'whitesmoke', width:'25%',height:'2rem', fontSize:'1.5rem'}}
-           > {(showAmount) ? '# of Questions' : `${qAmount} Qs`} </button>
+           style={(showAmount)? {backgroundColor: '#07701d', color: 'whitesmoke', width:'25%',height:'2rem', fontSize:'1.5rem'} : {backgroundColor: '#212121', color: 'whitesmoke', width:'20%',height:'2rem', fontSize:'1.5rem'}}
+           > {(showAmount) ? 'AMOUNT' : `AMOUNT`} </button>
 
 
            <button
@@ -141,10 +141,10 @@ console.log('not equal quizDataReference',quizDataReference )
                })
            
            }}
-           style={(showCategory) ? {backgroundColor: '#07701d', color: 'whitesmoke', width:'100%',height:'2rem', fontSize:'1.5rem'} : {backgroundColor: '#212121', color:'whitesmoke', width:'25%',height:'2rem', fontSize:'1.5rem'} }
+           style={(showCategory) ? {backgroundColor: '#07701d', color: 'whitesmoke', width:'50%',height:'2rem', fontSize:'1.5rem'} : {backgroundColor: '#212121', color:'whitesmoke', width:'20%',height:'2rem', fontSize:'1.5rem'} }
 
            >
-           {(showCategory)? 'CATEGORY': 'Q Type'}
+           {(showCategory)? 'CATEGORY': 'CATEGORY'}
            </button>       
           
            <button
@@ -154,7 +154,7 @@ console.log('not equal quizDataReference',quizDataReference )
             toggleShowCategory(false)
             toggleShowType(false)
             }}
-            style={(showDifficulty)? {backgroundColor: '#07701d', color: 'whitesmoke', width:'100%',height:'2rem', fontSize:'1.5rem'} : {backgroundColor: '#212121', color: 'whitesmoke', width:'25%',height:'2rem', fontSize:'1.5rem'}}
+            style={(showDifficulty)? {backgroundColor: '#07701d', color: 'whitesmoke', width:'100%',height:'2rem', fontSize:'1.5rem'} : {backgroundColor: '#212121', color: 'whitesmoke', width:'20%',height:'2rem', fontSize:'1.5rem'}}
 
            >{(showDifficulty) ? 'Difficulty': 'Difficulty'}</button>
            
@@ -165,14 +165,18 @@ console.log('not equal quizDataReference',quizDataReference )
             toggleShowCategory(false)
             toggleShowDifficulty(false)
            }}
-           style={(showType)? {backgroundColor: '#07701d', color: 'whitesmoke', width:'100%',height:'2rem', fontSize:'1.5rem', border:'3px double #212121 ', paddingTop: '2px', paddingBottom:'2px'} : {backgroundColor: '#212121', color: 'whitesmoke', width:'25%', height:'2rem', fontSize: '1.5rem'}}
+           style={(showType)? {backgroundColor: '#07701d', color: 'whitesmoke', width:'100%',height:'2rem', fontSize:'1.5rem', border:'3px double #212121 ', paddingTop: '2px', paddingBottom:'2px'} : {backgroundColor: '#212121', color: 'whitesmoke', width:'20%', height:'2rem', fontSize: '1.5rem'}}
 
            > {( qType === 'boolean') ? `TorF` : `M.C.`}</button>
            {
             (showAmount)
             ?
             <div style={{border: '2px solid yellow', width:'50%', height:'50%', marginLeft: 'auto', marginRight: 'auto'}}>
-            
+                        
+           <h4 style={{backgroundColor: '#212121', color: 'whitesmoke',width: '50%', height:'auto', marginLeft: 'auto', marginRight: 'auto'}}>
+           Change Amount Of Questions
+           </h4>
+    
             <Badge  as='button' 
             value={5}
             style={(qAmount && qAmount < 10)? {backgroundColor: '#07701d', color: 'whitesmoke'} :{backgroundColor: '#212121', color: 'whitesmoke'}} 
@@ -200,16 +204,18 @@ console.log('not equal quizDataReference',quizDataReference )
        {
            (showCategory) 
            ?
-           <div>               
-
-            <div style={{border: '3px solid red',overflow: 'scroll', width: '50%', height:'6rem', marginLeft: 'auto', marginRight: 'auto'}}>
+           <div>              
+           <h4 style={{backgroundColor: '#212121', color: 'whitesmoke',width: '50%', height:'auto', marginLeft: 'auto', marginRight: 'auto'}}>
+           Pick A Category
+           </h4>
+            <div style={{overflow: 'scroll', width: '50%', height:'6rem', marginLeft: 'auto', marginRight: 'auto'}}>
             
            
              { categoryList.trivia_categories.map((m)=>{
                 return(
                    <Button 
                    key={m.id} value={m.id} 
-                   style={(categoryName === m.name)? {backgroundColor: '#07701d', color: 'whitesmoke'} :{backgroundColor: 'grey', color: 'whitesmoke'}}
+                   style={(categoryName === m.name)? {backgroundColor: '#07701d', color: 'whitesmoke', fontSize: '1rem'} :{backgroundColor: 'grey', color: 'whitesmoke', fontSize: '1rem'}}
                    onClick={(e)=>{
                        e.preventDefault()
                        setQCategory(m.id)
@@ -231,6 +237,10 @@ console.log('not equal quizDataReference',quizDataReference )
 (showDifficulty)
 ?
 <div style={{border: '3px solid #07701d'}}>
+            
+<h4 style={{backgroundColor: '#212121', color: 'whitesmoke',width: '50%', height:'auto', marginLeft: 'auto', marginRight: 'auto'}}>
+Change Difficulty
+</h4>
 
 <div style={{border: '2px solid yellow', width:'50%', height:'50%', marginLeft: 'auto', marginRight: 'auto'}}>
 <Badge  as='button' 
@@ -264,6 +274,11 @@ setQDifficulty(e.target.value)
            (showType)
            ?
            <div style={{border: '2px solid red'}}>
+                       
+           <h4 style={{backgroundColor: '#212121', color: 'whitesmoke',width: '50%', height:'auto', marginLeft: 'auto', marginRight: 'auto'}}>
+           Change Question Type
+           </h4>
+    
            <button
            value={'boolean'}
            style={(qType === 'boolean')? {backgroundColor: '#07701d', color: 'whitesmoke'} :{backgroundColor: 'grey', color: 'whitesmoke'}} 
