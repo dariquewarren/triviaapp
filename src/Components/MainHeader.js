@@ -56,7 +56,7 @@ console.log('not equal quizDataReference',quizDataReference )
     return (
         <div style={{border:'5px dashed grey', backgroundColor: '#6e0303'}}>
         
-<h1>Quiz Whiz (by Darique Warren)</h1>
+<h1 style={{color: 'whitesmoke', textDecoration: 'underline', textDecorationColor: '#212121'}}>Quiz Whiz</h1>
                 
             <header
             style={{display:'flex', flexDirection: 'row'}}
@@ -106,7 +106,13 @@ console.log('not equal quizDataReference',quizDataReference )
             
             
         
-        
+         
+            <div style={{color:'whitesmoke',fontSize: '2rem', width: '80%', paddingTop: '1rem', paddingBottom: '2rem', marginLeft: 'auto', marginRight : 'auto'}}>
+           Quiz has:<br/> <Badge style={{border: '2px solid #cf8f03', backgroundColor: '#cf8f03', color: 'whitesmoke', paddingLeft: '2px', paddingRight: '2px', width: 'auto'}} >{qAmount}</Badge>         
+           <Badge style={{border: '2px solid #212121', backgroundColor: '#212121', color: 'whitesmoke', paddingLeft: '2px', paddingRight: '2px', width: 'auto'}} >{qDifficulty.toUpperCase()}</Badge>
+           <Badge style={{border: '2px solid #07701d', backgroundColor: '#07701d', color: 'whitesmoke', paddingLeft: '2px', paddingRight: '2px', width: 'auto'}} >{(qType === 'boolean')? 'TRUE / FALSE': 'MULTIPLE CHOICE' }</Badge>
+           <Badge style={{border: '2px solid #000277', backgroundColor: '#e41811e1', color: 'whitesmoke', paddingLeft: '2px', paddingRight: '2px', width: 'auto'}} >{categoryName.toUpperCase()} </Badge> Questions
+            </div>        
       
 
             {
@@ -168,6 +174,10 @@ console.log('not equal quizDataReference',quizDataReference )
            style={(showType)? {backgroundColor: '#07701d', color: 'whitesmoke', width:'40%',height:'2rem', fontSize:'1rem', border:'3px double #212121 ', paddingTop: '2px', paddingBottom:'2px'} : {backgroundColor: '#212121', color: 'whitesmoke', width:'20%', height:'2rem', fontSize: '1rem'}}
 
            >TYPE</button>
+
+
+
+
 
            {
             (showAmount)
@@ -344,36 +354,7 @@ setQDifficulty(e.target.value)
 
 
 
-             <div>
-             <Badge style={{border: '2px solid #6e0303', backgroundColor: '#6e0303', color: 'whitesmoke'}} >{qAmount}</Badge>         
-            <Badge style={{border: '2px solid #212121', backgroundColor: '#6e0303', color: 'whitesmoke'}} >{qDifficulty}</Badge>
-            <Badge style={{border: '2px solid #07701d', backgroundColor: '#6e0303', color: 'whitesmoke'}} >{(qType === 'boolean')? 'true / false': 'multiple choice' }</Badge>
-            <Badge style={{border: '2px solid #000277', backgroundColor: '#6e0303', color: 'whitesmoke'}} >{categoryName} Questions</Badge>
-          <Badge
-          style={(showSettings)? {border: '2px solid #6e0303', backgroundColor: '#07701d', color: 'whitesmoke'} : {border: '2px solid #6e0303',backgroundColor:'grey', color: '#000000'} }
-          >
-
-          <FaCogs
-          
-            onClick={()=>{
-                console.log('show/hide settings')
-                if(showSettings){
-                    toggleShowDifficulty(false)
-                    toggleShowCategory(false)
-                    toggleShowType(false)
-                    toggleShowAmount(false)
-                    toggleShowSettings(!showSettings)
-
-                } else{
-                    toggleShowSettings(!showSettings)
-
-                }
-            }}
-
-            />
-            </Badge>
-
-             </div>
+            
         </div>
     )
 }
