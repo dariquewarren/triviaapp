@@ -4,7 +4,8 @@ import Button from 'react-bootstrap/Button'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Modal from 'react-bootstrap/Modal'
-import {FaCogs} from 'react-icons/fa'
+import {FaCogs, FaCheck} from 'react-icons/fa'
+
 import { IconContext } from "react-icons"
 // at some point I want different quiz buttons to select different quizzes based on params available like difficulty, amount of questions, category and whether or not the options are strings or boolean
 // suggestion: copy the dropdowns on the opendtb website in the api docs
@@ -166,36 +167,51 @@ console.log('not equal quizDataReference',quizDataReference )
            }}
            style={(showType)? {backgroundColor: '#07701d', color: 'whitesmoke', width:'40%',height:'2rem', fontSize:'1rem', border:'3px double #212121 ', paddingTop: '2px', paddingBottom:'2px'} : {backgroundColor: '#212121', color: 'whitesmoke', width:'20%', height:'2rem', fontSize: '1rem'}}
 
-           >  Type</button>
+           >TYPE</button>
+
            {
             (showAmount)
             ?
-            <div style={{border: '2px solid yellow', width:'50%', height:'50%', marginLeft: 'auto', marginRight: 'auto'}}>
+           <div>
+           <h2 style={{ color: 'whitesmoke',width: '80%', marginLeft: 'auto', marginRight: 'auto'}}>
+           Select # Of Questions
+           </h2>
+            <div style={{ width:'90%', height:'50%', marginLeft: 'auto', marginRight: 'auto'}}>
                         
-           <h4 style={{backgroundColor: '#212121', color: 'whitesmoke',width: '50%', height:'auto', marginLeft: 'auto', marginRight: 'auto'}}>
-           Change Amount Of Questions
-           </h4>
+           
     
             <Badge  as='button' 
             value={5}
-            style={(qAmount && qAmount < 10)? {backgroundColor: '#07701d', color: 'whitesmoke'} :{backgroundColor: '#212121', color: 'whitesmoke'}} 
+            style={(qAmount && qAmount < 10)? 
+            {backgroundColor: '#07701d', color: 'whitesmoke', marginLeft: '1.5rem', marginRight:'1.5rem', height: '3rem', width: '3rem', fontSize: '1.5rem'} 
+            :
+            {backgroundColor: '#212121', color: 'whitesmoke',  marginLeft: '1.5rem', marginRight:'1.5rem', height: '3rem', width: '3rem', fontSize: '1.5rem'}} 
             onClick={(e)=>{
                 setQAmount(e.target.value)
             }}> 5 </Badge>
+            
             <Badge as='button' 
             value={10}
-            style={(qAmount == 10)? {backgroundColor: '#07701d', color: 'whitesmoke'} :{backgroundColor: '#3b0161', color: 'whitesmoke' }} 
+            style={(qAmount == 10)? 
+                {backgroundColor: '#07701d', color: 'whitesmoke', marginLeft: '1.5rem', marginRight:'1.5rem', height: '3rem', width: '3rem', fontSize: '1.5rem'} 
+                :
+                {backgroundColor: '#212121', color: 'whitesmoke',  marginLeft: '1.5rem', marginRight:'1.5rem', height: '3rem', width: '3rem', fontSize: '1.5rem'}} 
             onClick={(e)=>{
                 setQAmount(e.target.value)
             }}> 10 </Badge>
+            
             <Badge  as='button' 
             value={15}
-            style={(qAmount > 10 && qAmount < 20)? {backgroundColor: '#07701d', color: 'whitesmoke'} :{backgroundColor: '#212121', color: 'whitesmoke'}} 
+            style={(qAmount > 10 && qAmount < 20)? 
+                {backgroundColor: '#07701d', color: 'whitesmoke',  marginLeft: '1.5rem', marginRight:'1.5rem', height: '3rem', width: '3rem', fontSize: '1.5rem'} 
+                :
+                {backgroundColor: '#212121', color: 'whitesmoke',  marginLeft: '1.5rem', marginRight:'1.5rem', height: '3rem', width: '3rem', fontSize: '1.5rem'}} 
             onClick={(e)=>{
                 setQAmount(e.target.value)
             }}> 15 </Badge>
-            </div>
             
+            </div>
+            </div>
             :
             <p></p>
         }
@@ -204,17 +220,21 @@ console.log('not equal quizDataReference',quizDataReference )
            (showCategory) 
            ?
            <div>              
-           <h4 style={{backgroundColor: '#212121', color: 'whitesmoke',width: '50%', height:'auto', marginLeft: 'auto', marginRight: 'auto'}}>
-           Pick A Category
-           </h4>
-            <div style={{overflow: 'scroll', width: '50%', height:'6rem', marginLeft: 'auto', marginRight: 'auto'}}>
+           <h2 style={{ color: 'whitesmoke',width: '80%', marginLeft: 'auto', marginRight: 'auto'}}>
+           Pick A Category (scrollable)
+           </h2>
+            <div style={{border: '4px groove grey ', paddingTop: '4px',paddingBottom: '4px', overflow: 'scroll', width: '75%', height:'6rem', marginLeft: 'auto', marginRight: 'auto'}}>
             
            
              { categoryList.trivia_categories.map((m)=>{
                 return(
                    <Button 
                    key={m.id} value={m.id} 
-                   style={(categoryName === m.name)? {backgroundColor: '#07701d', color: 'whitesmoke', fontSize: '1rem'} :{backgroundColor: 'grey', color: 'whitesmoke', fontSize: '1rem'}}
+              
+                   style={(categoryName === m.name)? 
+                    {border: '3px solid #212121', backgroundColor: '#07701d', color: 'whitesmoke',height: 'auto', width: 'auto', fontSize: '1.5rem'} 
+                   :
+                   {backgroundColor: '#212121', color: 'grey', height: 'auto', width: 'auto', fontSize: '1.5rem'}}
                    onClick={(e)=>{
                        e.preventDefault()
                        setQCategory(m.id)
@@ -222,7 +242,7 @@ console.log('not equal quizDataReference',quizDataReference )
                        console.log('name, value',e.target.value, m.name)
                    }}
                    
-                   > {m.name}</Button>
+                   >{(categoryName === m.name) ? <p> {m.name} <FaCheck/></p> :`${m.name}`}</Button>
                 )
             })
               }
