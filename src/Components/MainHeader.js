@@ -120,8 +120,8 @@ console.log('not equal quizDataReference',quizDataReference )
             toggleShowDifficulty(false)
             toggleShowType(false)
            }}
-           style={(showAmount)? {backgroundColor: '#07701d', color: 'whitesmoke', width:'25%',height:'2rem', fontSize:'1.5rem'} : {backgroundColor: '#212121', color: 'whitesmoke', width:'20%',height:'2rem', fontSize:'1.5rem'}}
-           > {(showAmount) ? 'AMOUNT' : `AMOUNT`} </button>
+           style={(showAmount)? {backgroundColor: '#07701d', color: 'whitesmoke', width:'40%',height:'2rem', fontSize:'1rem'} : {backgroundColor: '#212121', color: 'whitesmoke', width:'20%',height:'2rem', fontSize:'1rem'}}
+           > AMOUNT</button>
 
 
            <button
@@ -141,11 +141,10 @@ console.log('not equal quizDataReference',quizDataReference )
                })
            
            }}
-           style={(showCategory) ? {backgroundColor: '#07701d', color: 'whitesmoke', width:'50%',height:'2rem', fontSize:'1.5rem'} : {backgroundColor: '#212121', color:'whitesmoke', width:'20%',height:'2rem', fontSize:'1.5rem'} }
+           style={(showCategory) ? {backgroundColor: '#07701d', color: 'whitesmoke', width:'40%',height:'2rem', fontSize:'1rem'} : {backgroundColor: '#212121', color:'whitesmoke', width:'20%',height:'2rem', fontSize:'1rem'} }
 
            >
-           {(showCategory)? 'CATEGORY': 'CATEGORY'}
-           </button>       
+           TOPIC  </button>       
           
            <button
            onClick={()=>{
@@ -154,9 +153,9 @@ console.log('not equal quizDataReference',quizDataReference )
             toggleShowCategory(false)
             toggleShowType(false)
             }}
-            style={(showDifficulty)? {backgroundColor: '#07701d', color: 'whitesmoke', width:'100%',height:'2rem', fontSize:'1.5rem'} : {backgroundColor: '#212121', color: 'whitesmoke', width:'20%',height:'2rem', fontSize:'1.5rem'}}
+            style={(showDifficulty)? {backgroundColor: '#07701d', color: 'whitesmoke', width:'40%',height:'2rem', fontSize:'1rem'} : {backgroundColor: '#212121', color: 'whitesmoke', width:'20%',height:'2rem', fontSize:'1rem'}}
 
-           >{(showDifficulty) ? 'Difficulty': 'Difficulty'}</button>
+           >LEVEL</button>
            
            <button
            onClick={()=>{
@@ -165,9 +164,9 @@ console.log('not equal quizDataReference',quizDataReference )
             toggleShowCategory(false)
             toggleShowDifficulty(false)
            }}
-           style={(showType)? {backgroundColor: '#07701d', color: 'whitesmoke', width:'100%',height:'2rem', fontSize:'1.5rem', border:'3px double #212121 ', paddingTop: '2px', paddingBottom:'2px'} : {backgroundColor: '#212121', color: 'whitesmoke', width:'20%', height:'2rem', fontSize: '1.5rem'}}
+           style={(showType)? {backgroundColor: '#07701d', color: 'whitesmoke', width:'40%',height:'2rem', fontSize:'1rem', border:'3px double #212121 ', paddingTop: '2px', paddingBottom:'2px'} : {backgroundColor: '#212121', color: 'whitesmoke', width:'20%', height:'2rem', fontSize: '1rem'}}
 
-           > {( qType === 'boolean') ? `TorF` : `M.C.`}</button>
+           >  Type</button>
            {
             (showAmount)
             ?
