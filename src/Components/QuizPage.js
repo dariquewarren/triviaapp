@@ -44,13 +44,7 @@ function QuizPage(props) {
       }}
       >QuizPage data button</button>
 
-      <button
-      onClick={()=>{
-        props.toggleShowResultsPage(!!!props.showResultsPage)
-          console.log('results page toggled to', props.showResultsPage )
-      }}
-      >showResults{props.quizDatashowResultsPage}</button>
-
+    
       {
           (props.quiz && props.showResultsPage === false)
            ? 
