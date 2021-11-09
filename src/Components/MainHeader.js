@@ -255,30 +255,39 @@ console.log('not equal quizDataReference',quizDataReference )
 {
 (showDifficulty)
 ?
-<div style={{border: '3px solid #07701d'}}>
+<div >
             
-<h4 style={{backgroundColor: '#212121', color: 'whitesmoke',width: '50%', height:'auto', marginLeft: 'auto', marginRight: 'auto'}}>
-Change Difficulty
-</h4>
+<h2 style={{ color: 'whitesmoke',width: '80%', marginLeft: 'auto', marginRight: 'auto'}}>
+ Difficulty Level
+</h2>
 
-<div style={{border: '2px solid yellow', width:'50%', height:'50%', marginLeft: 'auto', marginRight: 'auto'}}>
+<div style={{ width:'50%', height:'50%', marginLeft: 'auto', marginRight: 'auto'}}>
 <Badge  as='button' 
 value={'easy'}
-style={(qDifficulty === 'easy')? {backgroundColor: '#07701d', color: 'whitesmoke'} :{backgroundColor: 'grey', color: 'whitesmoke'}} 
+style={(qDifficulty === 'easy')? 
+{backgroundColor: '#07701d', color: 'whitesmoke', marginLeft: '1.5rem', marginRight:'1.5rem', height: '3rem', width: 'auto', fontSize: '1.5rem'} 
+:
+{backgroundColor: '#212121', color: 'whitesmoke',  marginLeft: '1.5rem', marginRight:'1.5rem', height: '3rem', width: 'auto', fontSize: '1.5rem'}} 
 onClick={(e)=>{
 setQDifficulty(e.target.value) 
 }}> Easy </Badge>
 
 <Badge as='button' 
 value={'medium'}
-style={(qDifficulty === 'medium')? {backgroundColor: '#07701d', color: 'whitesmoke'} :{backgroundColor: 'grey', color: 'whitesmoke'}} 
+style={(qDifficulty === 'medium')? 
+{backgroundColor: '#07701d', color: 'whitesmoke', marginLeft: '1.5rem', marginRight:'1.5rem', height: '3rem', width: 'auto', fontSize: '1.5rem'} 
+:
+{backgroundColor: '#212121', color: 'whitesmoke',  marginLeft: '1.5rem', marginRight:'1.5rem', height: '3rem', width: 'auto', fontSize: '1.5rem'}} 
 
 onClick={(e)=>{
 setQDifficulty(e.target.value) 
 }}> Medium </Badge>
 <Badge  as='button' 
 value={'hard'}
-style={(qDifficulty === 'hard')? {backgroundColor: '#07701d', color: 'white'} :{backgroundColor: 'grey', color: 'black'}} 
+style={(qDifficulty === 'hard')? 
+{backgroundColor: '#07701d', color: 'whitesmoke', marginLeft: '1.5rem', marginRight:'1.5rem', height: '3rem', width: 'auto', fontSize: '1.5rem'} 
+:
+{backgroundColor: '#212121', color: 'whitesmoke',  marginLeft: '1.5rem', marginRight:'1.5rem', height: '3rem', width: 'auto', fontSize: '1.5rem'}} 
 onClick={(e)=>{
 setQDifficulty(e.target.value) 
 }}> Hard </Badge>
@@ -292,25 +301,29 @@ setQDifficulty(e.target.value)
        {
            (showType)
            ?
-           <div style={{border: '2px solid red'}}>
+           <div >
                        
-           <h4 style={{backgroundColor: '#212121', color: 'whitesmoke',width: '50%', height:'auto', marginLeft: 'auto', marginRight: 'auto'}}>
+           <h2 style={{ color: 'whitesmoke',width: '80%', marginLeft: 'auto', marginRight: 'auto'}}>
            Change Question Type
-           </h4>
+           </h2>
     
            <button
            value={'boolean'}
-           style={(qType === 'boolean')? {backgroundColor: '#07701d', color: 'whitesmoke'} :{backgroundColor: 'grey', color: 'whitesmoke'}} 
-
-           onClick={(e)=>{
+           style={(qType === 'boolean')? 
+           {backgroundColor: '#07701d', color: 'whitesmoke', marginLeft: '1.5rem', marginRight:'1.5rem', height: '3rem', width: 'auto', fontSize: '1.5rem'} 
+           :
+           {backgroundColor: '#212121', color: 'whitesmoke',  marginLeft: '1.5rem', marginRight:'1.5rem', height: '3rem', width: 'auto', fontSize: '1.5rem'}} 
+            onClick={(e)=>{
                setQType(e.target.value)
            }}
            >True or False</button>
            <button
            value={'multiple'}
-           style={(qType === 'multiple')? {backgroundColor: '#07701d', color: 'whitesmoke'} :{backgroundColor: 'grey', color: 'whitesmoke'}} 
-
-           onClick={(e)=>{
+           style={(qType === 'multiple')?
+           {backgroundColor: '#07701d', color: 'whitesmoke', marginLeft: '1.5rem', marginRight:'1.5rem', height: '3rem', width: 'auto', fontSize: '1.5rem'} 
+           :
+           {backgroundColor: '#212121', color: 'whitesmoke',  marginLeft: '1.5rem', marginRight:'1.5rem', height: '3rem', width: 'auto', fontSize: '1.5rem'}} 
+               onClick={(e)=>{
                setQType(e.target.value)
            }}
            >Multiple Choice</button>
