@@ -206,7 +206,7 @@ useEffect(()=>{
     
 
 <div
-style={{border: '2px solid yellow', display:'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: '50%', marginLeft: 'auto', marginRight: 'auto'}}
+style={{ display:'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: '50%', marginLeft: 'auto', marginRight: 'auto'}}
 >
 <Button 
 value={realAnswersArray[0]} 
@@ -228,7 +228,7 @@ onClick={(e)=>{
 >{realAnswersArray[1]}</Button>
 
 </div>
-<div style={{border: '2px solid red',display:'flex', flexDirection: 'row',alignItems: 'center', justifyContent: 'center', width: '50%', marginLeft: 'auto', marginRight: 'auto'}}>
+<div style={{display:'flex', flexDirection: 'row',alignItems: 'center', justifyContent: 'center', width: '50%', marginLeft: 'auto', marginRight: 'auto'}}>
 <Button 
 value={realAnswersArray[2]} 
 style={ (userGuess === realAnswersArray[2]) ?{ backgroundColor: '#07701d', width:'50%'}:{ backgroundColor: 'grey', width:'50%'} }
