@@ -13,7 +13,7 @@ useEffect(()=>{
         Quiz has:<br/>                                   
         <Badge style={{marginLeft: '1px', marginRight:'1px', backgroundColor: '#cf8f03', color: 'whitesmoke', paddingLeft: '2px', paddingRight: '2px', width: 'auto'}} >{props.amount}</Badge>         
         <Badge style={{marginLeft: '1px', marginRight:'1px', backgroundColor: '#212121', color: 'whitesmoke', paddingLeft: '2px', paddingRight: '2px', width: 'auto'}} >{props.difficulty.toUpperCase()}</Badge>
-        <Badge style={{marginLeft: '1px', marginRight:'1px', backgroundColor: '#07701d', color: 'whitesmoke', paddingLeft: '2px', paddingRight: '2px', width: 'auto'}} >{(props.type === 'boolean')? 'TRUE / FALSE': 'MULTIPLE CHOICE' }</Badge>
+        <Badge style={{marginLeft: '1px', marginRight:'1px', backgroundColor: '#07701d', color: 'whitesmoke', paddingLeft: '2px', paddingRight: '2px', width: 'auto'}} >{props.type}</Badge>
         <Badge style={{ marginLeft: '1px', marginRight:'1px',backgroundColor: '#e41811e1', color: 'whitesmoke', paddingLeft: '2px', paddingRight: '2px', width: 'auto'}} >{props.category.toUpperCase()} </Badge> Questions
         </div>
     )
