@@ -142,7 +142,7 @@ const answersArray = [...new Set(props.incorrect_answers)]
           return  Math.random() - 0.5
         })
         const uniqueArr = [...new Set(answersArray)]
-      console.log(uniqueArr);
+      console.log('unique array',uniqueArr);
       setRealAnswersArray(uniqueArr)
 return uniqueArr
       }
@@ -165,7 +165,6 @@ useEffect(()=>{
     }
     
     
-      
     console.log(realAnswersArray, props.correct_answer)
 }, [props.questionsAnswered])
 
