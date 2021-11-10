@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import Button from 'react-bootstrap/Button'
+import Badge from 'react-bootstrap/Badge'
 import QuestionCard from './QuestionCard'
 import ResultsPage from './ResultsPage'
 
@@ -35,15 +36,18 @@ function QuizPage(props) {
 
 
     return  (
-        <div>
-        questions answered {props.questionsAnswered}/{(props.quiz) ? props.quiz.length : 'undefined'}
-      <button
-      onClick={()=>{
-          console.log('quizpagedata props', props)
-        console.log('quiz answers array', props.quizAnswers )
-      }}
-      >QuizPage data button</button>
-
+        <div style={{backgroundColor: '#07701d', paddingBottom: '2rem'}}>
+        
+    
+     <Badge style={{marginTop: '3px',backgroundColor: 'black', color: 'whitesmoke'}}>questions answered{props.questionsAnswered}/{(props.quiz) ? props.quiz.length : 'undefined'} <button
+     onClick={()=>{
+         console.log('quizpagedata props', props)
+       console.log('quiz answers array', props.quizAnswers )
+     }}
+     >QuizPage data button</button>
+ </Badge>
+    
+      
     
       {
           (props.quiz && props.showResultsPage === false)
