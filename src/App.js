@@ -43,7 +43,7 @@ fetch('https://opentdb.com/api_token.php?command=request').then((response)=> {
       return response.json()
      }).then((data)=>{
 // change testData so it adds an error key with the same value as the current question fields
-       const testData = [{question: 'N/A. Modify settings and try again. TIP: Try Changing TYPE first ', correct_answer: 'none', incorrect_answer: 'none'}]
+       const testData = [{question: 'N/A. Modify settings and try again. TIP: Try Changing TYPE first ', correct_answer: 'nothing', incorrect_answer: ['none', 'not available', 'null']}]
        let realData = data.results
        if(data.results.length < 1){
         
