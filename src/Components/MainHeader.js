@@ -6,7 +6,7 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import Modal from 'react-bootstrap/Modal'
 import {FaCogs, FaCheck} from 'react-icons/fa'
 
-import { IconContext } from "react-icons"
+import QuizSettingsBlurb from './HeaderComponents/QuizSettingsBlurb'
 // at some point I want different quiz buttons to select different quizzes based on params available like difficulty, amount of questions, category and whether or not the options are strings or boolean
 // suggestion: copy the dropdowns on the opendtb website in the api docs
 // may have to make two seperate question Cards to accomodate new data 
@@ -104,15 +104,15 @@ console.log('not equal quizDataReference',quizDataReference )
             </header>
 
             
-            
+            <QuizSettingsBlurb
+            amount={qAmount} 
+            difficulty={qDifficulty.toUpperCase()} 
+            type={(qType === 'boolean')? 'TRUE / FALSE': 'MULTIPLE CHOICE' } 
+            category={categoryName.toUpperCase()}
+            />
         
          
-            <div style={{color:'whitesmoke',fontSize: '2rem', width: '80%', paddingTop: '1rem', paddingBottom: '2rem', marginLeft: 'auto', marginRight : 'auto'}}>
-           Quiz has:<br/> <Badge style={{border: '2px solid #cf8f03', backgroundColor: '#cf8f03', color: 'whitesmoke', paddingLeft: '2px', paddingRight: '2px', width: 'auto'}} >{qAmount}</Badge>         
-           <Badge style={{border: '2px solid #212121', backgroundColor: '#212121', color: 'whitesmoke', paddingLeft: '2px', paddingRight: '2px', width: 'auto'}} >{qDifficulty.toUpperCase()}</Badge>
-           <Badge style={{border: '2px solid #07701d', backgroundColor: '#07701d', color: 'whitesmoke', paddingLeft: '2px', paddingRight: '2px', width: 'auto'}} >{(qType === 'boolean')? 'TRUE / FALSE': 'MULTIPLE CHOICE' }</Badge>
-           <Badge style={{border: '2px solid #000277', backgroundColor: '#e41811e1', color: 'whitesmoke', paddingLeft: '2px', paddingRight: '2px', width: 'auto'}} >{categoryName.toUpperCase()} </Badge> Questions
-            </div>        
+               
       
 
             {
