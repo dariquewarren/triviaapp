@@ -39,15 +39,12 @@ function QuizPage(props) {
         <div style={{backgroundColor: '#07701d', paddingBottom: '2rem'}}>
         
     
-     <Badge style={{marginTop: '3px',backgroundColor: 'black', color: 'whitesmoke'}}>questions answered{props.questionsAnswered}/{(props.quiz) ? props.quiz.length : 'undefined'} <button
-     onClick={()=>{
-         console.log('quizpagedata props', props)
-       console.log('quiz answers array', props.quizAnswers )
-     }}
-     >QuizPage data button</button>
+  <Badge style={{width:'50%', color: 'whitesmoke', fontSize: '2rem'}}>
+      {props.questionsAnswered}/{(props.quiz) ? props.quiz.length : 'undefined'} 
+     
  </Badge>
-    
-      
+    <br/>
+ 
     
       {
           (props.quiz && props.showResultsPage === false)
