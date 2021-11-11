@@ -112,7 +112,7 @@ function AmountMenu(props){
     return(
         <div>
         <h2 style={{ color: 'whitesmoke',width: '80%', marginLeft: 'auto', marginRight: 'auto'}}>
-        Select # Of Questions
+        Select # Of Questions 
         </h2>
          <div style={{ width:'90%', height:'50%', marginLeft: 'auto', marginRight: 'auto'}}>
                      
