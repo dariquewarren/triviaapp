@@ -66,10 +66,7 @@ const BooleanCard=(props)=>{
              
         {(isGuessSubmitted) 
          ?
- <h3 
- style={{backgroundColor: 'grey', border: '4px solid green'}}>
- Guess submitted
- </h3> 
+ <p></p>
  
           :  
  
@@ -174,10 +171,7 @@ useEffect(()=>{
 
 {
     (isGuessSubmitted) ? 
-    <h3 
-    style={{backgroundColor: 'grey', border: '4px solid green'}}>
-    Guess submitted
-    </h3> 
+    <p></p>
      :
 
      <Card
