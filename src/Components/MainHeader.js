@@ -105,12 +105,7 @@ console.log('not equal quizDataReference',quizDataReference )
             </header>
 
             
-            <QuizSettingsBlurb
-            amount={qAmount} 
-            difficulty={qDifficulty.toUpperCase()} 
-            type={(qType === 'boolean')? 'TRUE / FALSE': 'MULTIPLE CHOICE' } 
-            category={categoryName.toUpperCase()}
-            />
+            
         
          
                
@@ -121,7 +116,12 @@ console.log('not equal quizDataReference',quizDataReference )
                 ? 
     
                 <div>
-           
+                <QuizSettingsBlurb
+                amount={qAmount} 
+                difficulty={qDifficulty.toUpperCase()} 
+                type={(qType === 'boolean')? 'TRUE / FALSE': 'MULTIPLE CHOICE' } 
+                category={categoryName.toUpperCase()}
+                />
 
                 <SettingsMenu
                 amount={qAmount} category={qCategory}
