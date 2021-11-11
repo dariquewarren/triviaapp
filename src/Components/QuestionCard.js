@@ -78,8 +78,8 @@ const BooleanCard=(props)=>{
      {border: '4px solid black', marginLeft: 'auto', marginRight: 'auto', width:'65%', backgroundColor: '#6e0303', color: 'whitesmoke'}
          }>
  
- <Card.Header style={{fontSize: '1.5rem', backgroundColor:'black'}}>Q {props.questionNumber} : {decodeURI(props.question)}</Card.Header>
- <h3 style={{fontSize: '1rem', color: 'black'}}> {(userGuess === 'SELECT AN ANSWER')? `` : `Your Guess: ${userGuess}`} </h3>
+ <Card.Header style={{fontSize: '1.5rem', backgroundColor:'black'}}>Q{props.questionNumber}  {decodeURI(props.question)}</Card.Header>
+ <h3 style={{fontSize: '1rem',backgroundColor: '#07701d', color: 'whitesmoke',fontSize: '1.5rem', marginTop: '0rem'}}> {(userGuess === 'SELECT AN ANSWER')? `` : `Your Guess: ${userGuess}`} </h3>
  
  <Form 
  onSubmit={(e)=>{
