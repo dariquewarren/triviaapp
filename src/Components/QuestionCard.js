@@ -170,8 +170,7 @@ useEffect(()=>{
 
 
     return (
-        <div>
-        Multiple Choice Card
+        <div style={{marginBottom: '.5rem'}}>
 
 {
     (isGuessSubmitted) ? 
@@ -186,8 +185,8 @@ useEffect(()=>{
         {border: '4px solid black', marginLeft: 'auto', marginRight: 'auto', width:'65%', backgroundColor: '#6e0303', color: 'whitesmoke'}
             }
      >
-     <Card.Header style={{fontSize: '1.5rem', backgroundColor:'black'}}>Q {props.questionNumber} : {decodeURI(props.question)}</Card.Header>
-     <h3 style={{fontSize: '1rem', color: 'black'}}> {(userGuess === 'SELECT AN ANSWER')? `` : `Your Guess: ${userGuess}`} </h3>
+     <Card.Header style={{fontSize: '1.5rem', backgroundColor:'black'}}>Q{props.questionNumber} : {decodeURI(props.question)}</Card.Header>
+     <h3 style={{fontSize: '1rem',marginTop: '0rem',backgroundColor: '#07701d', color: 'whitesmoke'}}> {(userGuess === 'SELECT AN ANSWER')? `` : `Your Guess: ${userGuess}`} </h3>
      
      <Form
      onSubmit={(e)=>{
@@ -250,20 +249,21 @@ onClick={(e)=>{
 
 </div>
 
-    
-     <Button variant='primary' type='submit'>Submit</Button>
+<Card.Footer style={{
+    display: 'flex', flexDirection: 'row',  marginLeft:'80%'
+   }}>
+     <Button 
+     style={{width: '100%', backgroundColor: (userGuess === 'SELECT AN ANSWER')?'#212121' : '#07701d', color:'whitesmoke'}}
+     disabled={(userGuess=== 'SELECT AN ANSWER') ? true : false} 
+     bg='primary' type='submit'
+     >Submit</Button>
+
+     </Card.Footer>
      </Form>
      </Card>
 }
 
-        <button
-        onClick={()=>{
-            console.log('multiple choice props', props)
-            console.log('userGuess', userGuess)
-            console.log('qObject', qObject)
-
-        }}
-        >Log MChoice Data</button>
+        
         </div>
     )
 }
