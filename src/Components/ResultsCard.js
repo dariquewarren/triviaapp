@@ -5,17 +5,13 @@ function ResultsCard(props) {
     return (
         <div
         style={
-            {backgroundColor: (props.isGuessCorrect)? '#07701d': '#6e0303', border: (props.isGuessCorrect)?'4px solid #07701d' :'4px solid red', marginLeft: 'auto', marginRight: 'auto', 
-            width:'65%', color: 'whitesmoke'}}
+            {backgroundColor: (props.isGuessCorrect)? '#07701d': '#6e0303',color: 'whitesmoke', border: '4px solid #212121', marginLeft: 'auto', marginRight: 'auto', 
+            width:'90%', color: 'whitesmoke', fontSize: '1.5rem', marginBottom: '.5rem'}}
         >
             <Card >
-            <Card.Header style={{fontSize: '2rem',backgroundColor: 'black', color: 'whitesmoke'}}>question # {props.questionNumber} : {props.question}</Card.Header>
+            <Card.Header style={{fontSize: '2rem', fontWeight: 'bold',marginLeft: 'auto', marginRight:'auto', width: 'auto'}}>question # {props.questionNumber} : {props.question}</Card.Header>
            
-            <Card.Header style={
-                (props.isGuessCorrect) ? { fontSize: '1.5rem', backgroundColor: 'black', color: 'green', marginLeft: 'auto', marginRight: 'auto', 
-                width:'65%'} : {fontSize: '1.5rem', backgroundColor: 'black', color: '#6e0303', marginLeft: 'auto', marginRight: 'auto', 
-                width:'65%'}
-            }>
+            <Card.Header >
            <Badge pill style={{color:'whitesmoke', paddingLeft: '1px', paddingRight: '1px', paddingBottom: '1px'}}>
            Correct Answer:
            </Badge> <br></br> {props.correctAnswer}
@@ -23,11 +19,11 @@ function ResultsCard(props) {
 
             <Card.Header style={
                 (props.isGuessCorrect) ? {fontSize: '1.5rem', backgroundColor: 'black', color: '#07701d', marginLeft: 'auto', marginRight: 'auto', 
-                width:'65%'} : {fontSize: '1.5rem', backgroundColor: 'black', color: '#6e0303', marginLeft: 'auto', marginRight: 'auto', 
-                width:'65%'}
+                } : {fontSize: '1.5rem', backgroundColor: 'black', color: '#6e0303', marginLeft: 'auto', marginRight: 'auto', 
+               }
             }>
             <Badge pill style={{color:'whitesmoke', paddingLeft: '1px', paddingRight: '1px', paddingBottom: '1px'}}>
-            Your Selection :
+            Your Guess :
             </Badge>
             <br></br>
             {props.userGuess}</Card.Header>
