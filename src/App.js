@@ -6,7 +6,14 @@ import QuizPage from './Components/QuizPage';
 import MainHeader from './Components/MainHeader';
 
 function App() {
-const [quizData, setQuizData] = useState([])
+  var testArray =[{
+    question: ' Click Start To Begin',
+    category : 'boolean',
+    type :'none',
+    correct_answer: 'none',
+    incorrect_answers: ['nope', 'welcome', 'hello']
+  }]
+const [quizData, setQuizData] = useState(testArray)
 const [quizAnswers, setQuizAnswers] = useState([])
 const [questionsAnswered, addQuestionsAnswered] = useState(0)
 const [showResultsPage, toggleShowResultsPage] = useState(false)
@@ -64,21 +71,19 @@ useEffect(()=>{
 },[quizData])
 
   return (
-    <div className="App">
-   <header>
-   <MainHeader 
-   getTriviaData={getTriviaData} quizData={quizData} setQuizData={setQuizData} 
-   quizAnswers={quizAnswers} setQuizAnswers={setQuizAnswers} 
-   questionsAnswered={questionsAnswered} addQuestionsAnswered={addQuestionsAnswered}
-   showResultsPage={showResultsPage} toggleShowResultsPage={toggleShowResultsPage}
-   />
-   </header>
+    <div style={{backgroundColor: '#6e0303', textAlign: 'center'}} >
+    <MainHeader style={{marginBottom: '0rem'}}
+    getTriviaData={getTriviaData} quizData={quizData} setQuizData={setQuizData} 
+    quizAnswers={quizAnswers} setQuizAnswers={setQuizAnswers} 
+    questionsAnswered={questionsAnswered} addQuestionsAnswered={addQuestionsAnswered}
+    showResultsPage={showResultsPage} toggleShowResultsPage={toggleShowResultsPage}
+    />
 
 
 
 
 
-   <QuizPage 
+   <QuizPage style={{backgroundColor: '#6e0303', textAlign: 'center'}}
    quiz={quizData} quizAnswers={quizAnswers} setQuizAnswers={setQuizAnswers}
    questionsAnswered={questionsAnswered} addQuestionsAnswered={addQuestionsAnswered}
    showResultsPage={showResultsPage} toggleShowResultsPage={toggleShowResultsPage}

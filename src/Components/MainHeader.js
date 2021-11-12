@@ -55,14 +55,11 @@ console.log('not equal quizDataReference',quizDataReference )
         
     }, [show, props.quizData])
     return (
-        <div style={{border:'5px dashed grey', backgroundColor: '#6e0303'}}>
+        <div style={{border:'5px solid #6e0303', backgroundColor: '#6e0303'}}>
         
-<h1 style={{color: 'whitesmoke', textDecoration: 'underline', textDecorationColor: '#212121'}}>Quiz Whiz</h1>
-                
-            <header
-            style={{display:'flex', flexDirection: 'row'}}
-            >
-            <button
+<h1 style={{color: 'whitesmoke', textDecoration:(showSettings) ?'none': 'underline', textDecorationColor:(showSettings)? 'none' : '#212121'}}>
+
+<button
             onClick={()=>{
               props.setQuizData([])
               props.setQuizAnswers([])
@@ -71,39 +68,41 @@ console.log('not equal quizDataReference',quizDataReference )
              props.getTriviaData(qAmount, qCategory, qDifficulty, qType)
              console.log(props.quizData)
            }}
-           style={{margin: 'auto',fontSize: '3rem', paddingLeft: '1rem', paddingRight: '2rem', backgroundColor: '#212121', color:'whitesmoke', height: '7rem', width:'15rem', display:'flex', justifyContent: 'center', alignItems:'center'}}
-            >{(props.quizData.length < 1) ? 'START' : 'GRAB QUIZ'  }  </button>
+           style={{marginLeft: '5px',marginRight: '5px', marginTop:'0rem' , marginBottom: '0rem', height: 'auto', width:'8rem',fontSize: '1.5rem', paddingLeft: '1rem', paddingRight: '2rem',  backgroundColor: '#212121', color:'whitesmoke'}}
+            >START  </button>
 
-            <Button
-            style={(showSettings)? 
-                {margin: 'auto',fontSize: '3rem', paddingLeft: '1rem', paddingRight: '2rem', backgroundColor: '#07701d', color:'whitesmoke', height: '7rem', width:'15rem', display:'flex', justifyContent: 'center', alignItems:'center'}
-                : 
-                {margin: 'auto',fontSize: '3rem', paddingLeft: '1rem', paddingRight: '2rem', backgroundColor: 'grey', color:'#212121', height: '7rem', width:'15rem', display:'flex', justifyContent: 'center', alignItems:'center'}
-                }
-        
-                onClick={()=>{
-                    console.log('show/hide settings')
-                    if(showSettings){
-                        toggleShowDifficulty(false)
-                        toggleShowCategory(false)
-                        toggleShowType(false)
-                        toggleShowAmount(false)
-                        toggleShowSettings(!showSettings)
-    
-                    } else{
-                        toggleShowSettings(!showSettings)
-    
-                    }
-                }}
-    
-              
-            >
+            <p style={{marginLeft: '5px',marginRight: '5px', marginTop:'0rem', color:'whitesmoke'}}>
+             {(showSettings) ? 'Quiz Settings': 'Quiz Whiz'}
             <FaCogs
-            style={{height: '100%', width: '100%'}}
-              />
-              </Button>
-            </header>
+            style={(showSettings)? 
+                {marginLeft: '5px',marginRight: '5px',height: '4rem', width:'4rem', backgroundColor: '#6e0303', color:'#212121'}
+                : 
+                {marginLeft: '5px',marginRight: '5px',height: '2rem', width:'2rem', backgroundColor: '#6e0303', color:'whitesmoke'}
+                }            onClick={()=>{
+                console.log('show/hide settings')
+                if(showSettings){
+                    toggleShowDifficulty(false)
+                    toggleShowCategory(false)
+                    toggleShowType(false)
+                    toggleShowAmount(false)
+                    toggleShowSettings(!showSettings)
 
+                } else{
+                    toggleShowSettings(!showSettings)
+
+                }
+            }}
+
+              />
+
+
+            </p>
+
+
+         
+</h1>
+                
+          
             
             
         

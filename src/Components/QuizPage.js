@@ -36,7 +36,7 @@ function QuizPage(props) {
 
 
     return  (
-        <div style={{backgroundColor: '#07701d', paddingBottom: '2rem'}}>
+        <div style={{backgroundColor: '#07701d', paddingBottom: '2rem', minHeight: '75vh',height:'auto'}}>
         
     
   <Badge style={{width:'50%', color: 'whitesmoke', fontSize: '2rem'}}>
