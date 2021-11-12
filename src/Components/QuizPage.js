@@ -39,10 +39,15 @@ function QuizPage(props) {
         <div style={{backgroundColor: '#07701d', paddingBottom: '2rem', minHeight: '75vh',height:'auto'}}>
         
     
-  <Badge style={{width:'50%', color: 'whitesmoke', fontSize: '2rem'}}>
-      {props.questionsAnswered}/{(props.quiz) ? props.quiz.length : 'undefined'} 
-     
- </Badge>
+  {(props.showResultsPage)
+    ?
+    <p></p>
+    :
+    <Badge style={{width:'50%', color: 'whitesmoke', fontSize: '2rem'}}>
+    {props.questionsAnswered}/{(props.quiz) ? props.quiz.length : 'undefined'} Answered
+   
+</Badge>
+  }
     <br/>
  
     
@@ -64,7 +69,7 @@ function QuizPage(props) {
             )
           })
            :
-           <ResultsPage quizResults={props.quizAnswers}/>
+           <ResultsPage  quizLength={props.quiz.length} quizResults={props.quizAnswers} />
       }
 
      

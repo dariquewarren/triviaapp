@@ -1,28 +1,54 @@
 import React, {useEffect} from 'react'
 import ResultsCard from './ResultsCard'
-
+import Badge from 'react-bootstrap/Badge'
 function ResultsPage(props) {
 
-// write function to remove duplicates from quiz results array and return a mappable array
-// check if necessary aka do this way later in the construction progress lol
 
-    useEffect(()=>{
-    
+let wrongAnswerArray= (props.quizResults) ? props.quizResults.filter((f)=>f.isGuessCorrect === false) : 'nothing here'
+let correctAnswerArray= (props.quizResults) ? props.quizResults.filter((f)=>f.isGuessCorrect === true) : 'nothing here'
+   
+useEffect(()=>{
+    console.log('results page props', props)
+    console.log('wrongAnswerAmount', wrongAnswerArray)
 }, [props.quizResults])
 
     return (
         <div>
-<button
-onClick={()=>{
-    console.log('results page props', props)
-}}
->results page quiz answers</button>
+        
+
+       <h2 style={{textAlign: 'left', backgroundColor: '#07701d', marginTop:'0px', textDecoration: 'underline', textDecorationColor: 'black' }}>
+       <Badge style={{color: 'whitesmoke', fontSize: '2rem'}}>
+            
+      FinalScore {(correctAnswerArray.length /props.quizLength ) * 100}%
+  </Badge>
+  <br></br>
+  <Badge style={{color: 'whitesmoke', fontSize: '2rem'}}>
+            
+  {(correctAnswerArray.length)}/{(props.quizLength) ? props.quizLength : 'undefined'} Right Answers 
+      
+  </Badge>
+  <br></br>
+
+  <Badge style={{color: 'whitesmoke', fontSize: '2rem'}}>
+            
+  {(wrongAnswerArray.length)}/{(props.quizLength) ? props.quizLength : 'undefined'} Wrong Correct
+      
+  </Badge>
+
+       </h2>
+       <br></br>
+       
+      
+
 {
     (props.quizResults) 
     ? 
     props.quizResults.map((m)=>{
-        return !m.isCorrectAnswer && (
+        return  (
+            <div>
+            
             <ResultsCard key={props.quizResults.indexOf(m)} {...m}/>
+            </div>
         )
     })
     : 'no results yet'
