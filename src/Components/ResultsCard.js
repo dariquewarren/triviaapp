@@ -5,11 +5,11 @@ function ResultsCard(props) {
     return (
         <div
         style={
-            {backgroundColor: (props.isGuessCorrect)? '#07701d': '#6e0303',color: 'whitesmoke', border: '4px solid #212121', marginLeft: 'auto', marginRight: 'auto', 
+            {backgroundColor: (props.isGuessCorrect)? '#07701d': '#6e0303',color: 'whitesmoke', border: '8px ridge whitesmoke', marginLeft: 'auto', marginRight: 'auto', 
             width:'90%', color: 'whitesmoke', fontSize: '1.5rem', marginBottom: '.5rem'}}
         >
             <Card >
-            <Card.Header style={{fontSize: '2rem', fontWeight: 'bold',marginLeft: 'auto', marginRight:'auto', width: 'auto'}}>question # {props.questionNumber} : {props.question}</Card.Header>
+            <Card.Header style={{fontSize: '2rem', fontWeight: 'bold',marginLeft: 'auto', marginRight:'auto', width: 'auto'}}># {props.questionNumber} : {props.question}</Card.Header>
            
             <Card.Header >
            <Badge pill style={{color:'whitesmoke', paddingLeft: '1px', paddingRight: '1px', paddingBottom: '1px'}}>
@@ -28,11 +28,7 @@ function ResultsCard(props) {
             <br></br>
             {props.userGuess}</Card.Header>
 
-            <button
-            onClick={()=>{
-                console.log('results card props', props)
-            }}
-            >results card data button</button>
+        
             </Card>
         </div>
     )

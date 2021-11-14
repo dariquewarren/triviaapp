@@ -7,11 +7,11 @@ import MainHeader from './Components/MainHeader';
 
 function App() {
   var testArray =[{
-    question: ' Click Start To Begin',
+    question: ' Click Start Quiz Button Above To Begin',
     category : 'boolean',
     type :'none',
-    correct_answer: 'none',
-    incorrect_answers: ['nope', 'welcome', 'hello']
+    correct_answer: 'Quiz Whiz',
+    incorrect_answers: ['hi there', 'welcome', 'hello']
   }]
 const [quizData, setQuizData] = useState(testArray)
 const [quizAnswers, setQuizAnswers] = useState([])

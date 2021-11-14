@@ -55,11 +55,46 @@ console.log('not equal quizDataReference',quizDataReference )
         
     }, [show, props.quizData])
     return (
-        <div style={{border:'5px solid #6e0303', backgroundColor: '#6e0303'}}>
-        
-<h1 style={{color: 'whitesmoke', textDecoration:(showSettings) ?'none': 'underline', textDecorationColor:(showSettings)? 'none' : '#212121'}}>
+        <div style={{ backgroundColor:(showSettings)? '#212121' : '#6e0303'}}>
 
-<button
+        <details style={{ backgroundColor: (showSettings)? '#212121' :'', border:(showSettings)? '2px solid #212121': '' }} >
+        <summary style={{listStyle: 'none', textAlign: 'right', backgroundColor:(showSettings) ? '#212121' : ''}}>  <FaCogs
+        style={{marginLeft: '5px',marginRight: '5px',height: '2rem', width:'2rem', backgroundColor: '#6e0303', color:'whitesmoke'}}            onClick={()=>{
+            console.log('show/hide settings')
+            if(showSettings){
+                toggleShowDifficulty(false)
+                toggleShowCategory(false)
+                toggleShowType(false)
+                toggleShowAmount(false)
+                toggleShowSettings(!showSettings)
+
+            } else{
+                toggleShowSettings(!showSettings)
+
+            }
+        }}
+
+          />
+</summary>        
+        </details>
+
+        <h1 style={{marginLeft: '5px',marginRight: '5px', marginTop:'0rem', backgroundColor:(showSettings) ? '#212121' : '',  color: 'whitesmoke'}}>
+        {(showSettings) ? 'Quiz Settings': 'Quiz Whiz'} 
+       </h1>
+
+        {
+            (showSettings) 
+            ? 
+
+            <div>
+            <QuizSettingsBlurb
+            amount={qAmount} 
+            difficulty={qDifficulty.toUpperCase()} 
+            type={(qType === 'boolean')? 'TRUE / FALSE': 'MULTIPLE CHOICE' } 
+            category={categoryName.toUpperCase()}
+            />
+
+            <button
             onClick={()=>{
               props.setQuizData([])
               props.setQuizAnswers([])
@@ -68,94 +103,52 @@ console.log('not equal quizDataReference',quizDataReference )
              props.getTriviaData(qAmount, qCategory, qDifficulty, qType)
              console.log(props.quizData)
            }}
-           style={{marginLeft: '5px',marginRight: '5px', marginTop:'0rem' , marginBottom: '0rem', height: 'auto', width:'8rem',fontSize: '1.5rem', paddingLeft: '1rem', paddingRight: '2rem',  backgroundColor: '#212121', color:'whitesmoke'}}
-            >START  </button>
-
-            <p style={{marginLeft: '5px',marginRight: '5px', marginTop:'0rem', color:'whitesmoke'}}>
-             {(showSettings) ? 'Quiz Settings': 'Quiz Whiz'}
-            <FaCogs
-            style={(showSettings)? 
-                {marginLeft: '5px',marginRight: '5px',height: '4rem', width:'4rem', backgroundColor: '#6e0303', color:'#212121'}
-                : 
-                {marginLeft: '5px',marginRight: '5px',height: '2rem', width:'2rem', backgroundColor: '#6e0303', color:'whitesmoke'}
-                }            onClick={()=>{
-                console.log('show/hide settings')
-                if(showSettings){
-                    toggleShowDifficulty(false)
-                    toggleShowCategory(false)
-                    toggleShowType(false)
-                    toggleShowAmount(false)
-                    toggleShowSettings(!showSettings)
-
-                } else{
-                    toggleShowSettings(!showSettings)
-
-                }
-            }}
-
-              />
-
-
-            </p>
-
-
-         
-</h1>
-                
-          
-            
-            
-        
-         
-               
-            
-
-            {
-                (showSettings) 
-                ? 
-    
-                <div>
-                <QuizSettingsBlurb
-                amount={qAmount} 
-                difficulty={qDifficulty.toUpperCase()} 
-                type={(qType === 'boolean')? 'TRUE / FALSE': 'MULTIPLE CHOICE' } 
-                category={categoryName.toUpperCase()}
-                />
-
-                <SettingsMenu
-                amount={qAmount} category={qCategory}
-                difficulty={qDifficulty} type={qType}
-                setQAmount={setQAmount} setQCategory={setQCategory} 
-                setQDifficulty={setQDifficulty} setQType={setQType}
-                showAmount={showAmount} showCategory={showCategory}
-                showDifficulty={showDifficulty} showType={showType}
-                setCategoryList={setCategoryList} categoryList={categoryList}
-                categoryName={categoryName} setCategoryName={setCategoryName}
-                toggleCategory={toggleShowCategory} toggleAmount={toggleShowAmount}
-                toggleDifficulty={toggleShowDifficulty} toggleType={toggleShowType}
-                />
+           style={{marginLeft: 'auto',marginRight: 'auto' ,marginBottom: '1rem',height: 'auto', width:'auto',fontSize: '1.5rem', backgroundColor: '#07701d', color:'whitesmoke'}}
+            >START QUIZ </button>
+            <SettingsMenu
+            amount={qAmount} category={qCategory}
+            difficulty={qDifficulty} type={qType}
+            setQAmount={setQAmount} setQCategory={setQCategory} 
+            setQDifficulty={setQDifficulty} setQType={setQType}
+            showAmount={showAmount} showCategory={showCategory}
+            showDifficulty={showDifficulty} showType={showType}
+            setCategoryList={setCategoryList} categoryList={categoryList}
+            categoryName={categoryName} setCategoryName={setCategoryName}
+            toggleCategory={toggleShowCategory} toggleAmount={toggleShowAmount}
+            toggleDifficulty={toggleShowDifficulty} toggleType={toggleShowType}
+            />
 
 
 
+       
+   
+   
+
+
+  
+
+       </div>
+
+            :
+
+            <button
            
-       
-       
-
-
-      
-
-           </div>
-
-                :
-<p></p>
-            }
-         
-
-
+            onClick={()=>{
+              props.setQuizData([])
+              props.setQuizAnswers([])
+              props.addQuestionsAnswered(0)
+              props.toggleShowResultsPage(false)
+             props.getTriviaData(qAmount, qCategory, qDifficulty, qType)
+             console.log(props.quizData)
+           }}
+           style={{marginLeft: 'auto',marginRight: 'auto' ,height: 'auto', width:'auto',fontSize: '1.5rem', backgroundColor: '#212121', color:'whitesmoke'}}
+            >START QUIZ </button>
+        }
 
 
 
-            
+
+
         </div>
     )
 }

@@ -179,8 +179,7 @@ useEffect(()=>{
         {border: '4px solid black', marginLeft: 'auto', marginRight: 'auto', width:'65%', backgroundColor: '#6e0303', color: 'whitesmoke'}
             }
      >
-     <Card.Header style={{fontSize: '1.5rem', backgroundColor:'black'}}>Q{props.questionNumber} : {decodeURI(props.question)}</Card.Header>
-     <h3 style={{fontSize: '1rem',marginTop: '0rem',backgroundColor: '#07701d', color: 'whitesmoke'}}> {(userGuess === 'SELECT AN ANSWER')? `` : `Your Guess: ${userGuess}`} </h3>
+     <Card.Header style={{fontSize: '1.5rem', backgroundColor:'black', marginBottom:'1rem'}}>Q{props.questionNumber} : {decodeURI(props.question)}</Card.Header>
      
      <Form
      onSubmit={(e)=>{
@@ -199,11 +198,11 @@ useEffect(()=>{
     
 
 <div
-style={{ display:'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: '50%', marginLeft: 'auto', marginRight: 'auto'}}
+style={{ display:'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', height: '5rem', width: '100%'}}
 >
 <Button 
 value={realAnswersArray[0]} 
-style={ (userGuess === realAnswersArray[0]) ?{ backgroundColor: '#07701d', width:'50%'}:{ backgroundColor: 'grey', width:'50%'} }
+style={ {color: 'whitesmoke', backgroundColor:(userGuess === realAnswersArray[0]) ? '#07701d': '#212121', height: '100%', width: '50%', fontSize:(userGuess === realAnswersArray[0])?'2rem': '1.5rem', fontWeight:(userGuess === realAnswersArray[0])?'bold': '', textDecoration:(userGuess === realAnswersArray[0])?'underline': '', textWrap: 'overflow'}}
 onClick={(e)=>{
     e.preventDefault()
     changeUserGuess(e.target.value)
@@ -212,7 +211,7 @@ onClick={(e)=>{
 >{realAnswersArray[0]}</Button>
 <Button 
 value={realAnswersArray[1]} 
-style={ (userGuess === realAnswersArray[1]) ?{ backgroundColor: '#07701d', width:'50%'}:{ backgroundColor: 'grey', width:'50%'} }
+style={ {color: 'whitesmoke', backgroundColor:(userGuess === realAnswersArray[1]) ? '#07701d': '#212121', height: '100%', width: '50%', fontSize:(userGuess === realAnswersArray[1])?'2rem': '1.5rem', fontWeight:(userGuess === realAnswersArray[1])?'bold': '', textDecoration:(userGuess === realAnswersArray[1])?'underline': '', textWrap: 'overflow'}}
 onClick={(e)=>{
     e.preventDefault()
     changeUserGuess(e.target.value)
@@ -221,10 +220,10 @@ onClick={(e)=>{
 >{realAnswersArray[1]}</Button>
 
 </div>
-<div style={{display:'flex', flexDirection: 'row',alignItems: 'center', justifyContent: 'center', width: '50%', marginLeft: 'auto', marginRight: 'auto'}}>
+<div style={{display:'flex', flexDirection: 'row',alignItems: 'center', justifyContent: 'center',height:'5rem', width: '100%'}}>
 <Button 
 value={realAnswersArray[2]} 
-style={ (userGuess === realAnswersArray[2]) ?{ backgroundColor: '#07701d', width:'50%'}:{ backgroundColor: 'grey', width:'50%'} }
+style={ {color: 'whitesmoke', backgroundColor:(userGuess === realAnswersArray[2]) ? '#07701d': '#212121', height: '100%', width: '50%', fontSize:(userGuess === realAnswersArray[2])?'2rem': '1.5rem', fontWeight:(userGuess === realAnswersArray[2])?'bold': '', textDecoration:(userGuess === realAnswersArray[2])?'underline': '', textWrap: 'overflow'}}
 onClick={(e)=>{
     e.preventDefault()
     changeUserGuess(e.target.value)
@@ -233,7 +232,7 @@ onClick={(e)=>{
 >{realAnswersArray[2]}</Button>
 <Button 
 value={realAnswersArray[3]} 
-style={ (userGuess === realAnswersArray[3]) ?{ backgroundColor: '#07701d', width:'50%'}:{ backgroundColor: 'grey', width:'50%'} }
+style={ {color: 'whitesmoke', backgroundColor:(userGuess === realAnswersArray[3]) ? '#07701d': '#212121', height: '100%', width: '50%', fontSize:(userGuess === realAnswersArray[3])?'2rem': '1.5rem', fontWeight:(userGuess === realAnswersArray[3])?'bold': '', textDecoration:(userGuess === realAnswersArray[3])?'underline': '', textWrap: 'overflow'}}
 onClick={(e)=>{
     e.preventDefault()
     changeUserGuess(e.target.value)
@@ -247,10 +246,10 @@ onClick={(e)=>{
     display: 'flex', flexDirection: 'row',  marginLeft:'80%'
    }}>
      <Button 
-     style={{width: '100%', backgroundColor: (userGuess === 'SELECT AN ANSWER')?'#212121' : '#07701d', color:'whitesmoke'}}
+     style={{width: '100%', height: '2rem',  marginTop:'2rem', backgroundColor: (userGuess === 'SELECT AN ANSWER')?'#212121' : '#07701d', color:'whitesmoke'}}
      disabled={(userGuess=== 'SELECT AN ANSWER') ? true : false} 
      bg='primary' type='submit'
-     >Submit</Button>
+     >{(userGuess=== 'SELECT AN ANSWER') ? 'Select Your Guess' : 'Submit'}</Button>
 
      </Card.Footer>
      </Form>

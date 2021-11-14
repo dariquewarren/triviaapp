@@ -14,38 +14,53 @@ useEffect(()=>{
 
     return (
         <div>
+        <div
+        style={{width:'60%', marginLeft:'auto', marginRight: 'auto', display: 'flex', flexDirection: 'row', marginBottom: '2rem', border: '3px ridge whitesmoke'}}
+        >
+        <div
+        style={{width: '33%', borderRight: '3px ridge whitesmoke'}}
+        >
+        <Badge 
         
+        style={{color: 'whitesmoke', fontSize: '2rem', textWrap: 'overflow', width:'100%'}}>
+                    
+         {correctAnswerArray.length} Right  
+        </Badge>
+        </div>
 
-       <h2 style={{textAlign: 'left', backgroundColor: '#07701d', marginTop:'0px', textDecoration: 'underline', textDecorationColor: 'black' }}>
-       <Badge style={{color: 'whitesmoke', fontSize: '2rem'}}>
-            
-      FinalScore {(correctAnswerArray.length /props.quizLength ) * 100}%
-  </Badge>
-  <br></br>
-  <Badge style={{color: 'whitesmoke', fontSize: '2rem'}}>
-            
-  {(correctAnswerArray.length)}/{(props.quizLength) ? props.quizLength : 'undefined'} Right Answers 
-      
-  </Badge>
-  <br></br>
+        <div 
+        style={{width: '33%', borderRight: '3px ridge whitesmoke', backgroundColor: '#212121'}}
+        >
+        <Badge 
+        style={{color: 'whitesmoke', fontSize: '2rem',  textWrap: 'overflow', width:'100%'}}>
+                    
+       Score: {(correctAnswerArray.length /props.quizLength ) * 100}%
+        </Badge>
+        </div>
+        
+     
+        <div 
+        style={{width: '33%',backgroundColor: '#6e0303'}}
+        >
+        <Badge 
+        style={{color: 'whitesmoke', fontSize: '2rem', textWrap: 'overflow', width:'100%'}}>
+                    
+        {wrongAnswerArray.length} Wrong 
+        </Badge>
+        </div>
+        </div>
 
-  <Badge style={{color: 'whitesmoke', fontSize: '2rem'}}>
-            
-  {(wrongAnswerArray.length)}/{(props.quizLength) ? props.quizLength : 'undefined'} Wrong Correct
-      
-  </Badge>
 
-       </h2>
-       <br></br>
-       
-      
-
+        <div 
+        style={{overflowWrap:'break-line', overflow: 'scroll',marginLeft:'auto', marginRight:'auto', width: '80%', border: '6px ridge #6e0303',color: 'whitesmoke', height: '50vh'}}
+        >
+        <h1>Results</h1>
 {
     (props.quizResults) 
     ? 
     props.quizResults.map((m)=>{
         return  (
-            <div>
+            <div >
             
             <ResultsCard key={props.quizResults.indexOf(m)} {...m}/>
             </div>
@@ -53,8 +68,8 @@ useEffect(()=>{
     })
     : 'no results yet'
 }
+</div>
 
-           
         </div>
     )
 }
