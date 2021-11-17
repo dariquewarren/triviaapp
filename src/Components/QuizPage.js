@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useEffect} from 'react'
 import Badge from 'react-bootstrap/Badge'
 import QuestionCard from './QuestionCard'
 import ResultsPage from './ResultsPage'

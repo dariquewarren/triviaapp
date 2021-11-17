@@ -127,7 +127,6 @@ const BooleanCard=(props)=>{
 }
 
 const MultipleChoiceCard=(props)=>{
-    const tempArray = [...new Set(props.incorrect_answers), props.correct_answer]
 
     const [answersArray, changeAnswersArray] = useState([...new Set(props.incorrect_answers), props.correct_answer])
 const [isGuessSubmitted, changeIsGuessSubmitted] = useState(false)
@@ -135,7 +134,6 @@ const [isGuessSubmitted, changeIsGuessSubmitted] = useState(false)
 const {questionsAnswered, quizLength, toggleShowResultsPage} = props
 
 const handleAnswerButtons =  ()=>{
-    const newArray = [ props.correct_answer, ...new Set(props.incorrect_answers)]
 
     const shuffledArray =  answersArray.sort(() => Math.random() - 0.5)
     changeAnswersArray(shuffledArray)
