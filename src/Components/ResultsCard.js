@@ -6,7 +6,7 @@ function ResultsCard(props) {
         <div
         style={
             {backgroundColor: (props.isGuessCorrect)? '#07701d': '#6e0303',color: 'whitesmoke', border: '8px ridge whitesmoke', marginLeft: 'auto', marginRight: 'auto', 
-            width:'90%', color: 'whitesmoke', fontSize: '1.5rem', marginBottom: '.5rem'}}
+            width:'90%', fontSize: '1.5rem', marginBottom: '.5rem'}}
         >
             <Card >
             <Card.Header style={{fontSize: '2rem', fontWeight: 'bold',marginLeft: 'auto', marginRight:'auto', width: 'auto'}}># {props.questionNumber} : {props.question}</Card.Header>

@@ -1,12 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import Badge from 'react-bootstrap/Badge'
 
 function QuizSettingsBlurb(props) {
-    useEffect(()=>{
-
-    console.log('quizSettingsBlurb prps', props)
-
-}, [props.amount])
+  
     return (
       
         <div style={{backgroundColor:'#212121', color:'whitesmoke',fontSize: '2rem', width: '100%', paddingTop: '1rem', paddingBottom: '2rem', marginLeft: 'auto', marginRight : 'auto'}}>

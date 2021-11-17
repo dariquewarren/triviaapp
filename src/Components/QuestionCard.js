@@ -60,7 +60,7 @@ const BooleanCard=(props)=>{
  }else{
      return
  }
-   },[props.questionsAnswered])
+   })
      return (
          <div style={{justifyItems: 'center', marginLeft: 'auto', marginRight: 'auto', width:'100%', marginTop: '3px', marginBottom: '3px'}}>
              
@@ -76,7 +76,7 @@ const BooleanCard=(props)=>{
          }>
  
  <Card.Header style={{fontSize: '1.5rem', backgroundColor:'black'}}>Q{props.questionNumber}  {decodeURI(props.question)}</Card.Header>
- <h3 style={{fontSize: '1rem',backgroundColor: '#07701d', color: 'whitesmoke',fontSize: '1.5rem', marginTop: '0rem'}}> {(userGuess === 'SELECT AN ANSWER')? `` : `Your Guess: ${userGuess}`} </h3>
+ <h3 style={{fontSize: '1rem',backgroundColor: '#07701d', color: 'whitesmoke', marginTop: '0rem'}}> {(userGuess === 'SELECT AN ANSWER')? `` : `Your Guess: ${userGuess}`} </h3>
  
  <Form 
  onSubmit={(e)=>{
@@ -127,23 +127,21 @@ const BooleanCard=(props)=>{
 }
 
 const MultipleChoiceCard=(props)=>{
-    const [realAnswersArray, setRealAnswersArray] = useState([])
+    const tempArray = [...new Set(props.incorrect_answers), props.correct_answer]
+
+    const [answersArray, changeAnswersArray] = useState([...new Set(props.incorrect_answers), props.correct_answer])
+const [isGuessSubmitted, changeIsGuessSubmitted] = useState(false)
     const [userGuess, changeUserGuess] = useState('SELECT AN ANSWER')
-    const [isGuessSubmitted, changeIsGuessSubmitted] = useState(false)
+const {questionsAnswered, quizLength, toggleShowResultsPage} = props
 
-const answersArray = [...new Set(props.incorrect_answers)]
-    answersArray.push(props.correct_answer)
+const handleAnswerButtons =  ()=>{
+    const newArray = [ props.correct_answer, ...new Set(props.incorrect_answers)]
 
-   const shuffleArray =(arr)=> {
-        arr.sort(()=>{
-          return  Math.random() - 0.5
-        })
-        const uniqueArr = [...new Set(answersArray)]
-      console.log('unique array',uniqueArr);
-      setRealAnswersArray(uniqueArr)
-return uniqueArr
-      }
-      
+    const shuffledArray =  answersArray.sort(() => Math.random() - 0.5)
+    changeAnswersArray(shuffledArray)
+    console.log('buttons switched')
+  }
+
       const qObject =  {
         question: props.question ,
         questionNumber: props.questionNumber,
@@ -154,16 +152,12 @@ return uniqueArr
       }
 
 useEffect(()=>{
-    shuffleArray(answersArray);
-    if(props.questionsAnswered === props.quizLength){
-        props.toggleShowResultsPage(true)
-    }else{
-        return
+    if(questionsAnswered === quizLength){
+      toggleShowResultsPage(true)
     }
+    handleAnswerButtons()
     
-    
-    console.log(realAnswersArray, props.correct_answer)
-}, [props.questionsAnswered])
+},[answersArray,isGuessSubmitted,handleAnswerButtons,toggleShowResultsPage,questionsAnswered, quizLength])
 
 
     return (
@@ -189,7 +183,8 @@ useEffect(()=>{
          }else{
              props.handleQuizAnswers(qObject)
              props.addQuestionsAnswered(props.questionsAnswered + 1)
-             changeIsGuessSubmitted(true)
+handleAnswerButtons()
+    changeIsGuessSubmitted(true)
              console.log('qCard props', props)
      
              }
@@ -198,49 +193,41 @@ useEffect(()=>{
     
 
 <div
-style={{ display:'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', height: '5rem', width: '100%'}}
 >
-<Button 
-value={realAnswersArray[0]} 
-style={ {color: 'whitesmoke', backgroundColor:(userGuess === realAnswersArray[0]) ? '#07701d': '#212121', height: '100%', width: '50%', fontSize:(userGuess === realAnswersArray[0])?'2rem': '1.5rem', fontWeight:(userGuess === realAnswersArray[0])?'bold': '', textDecoration:(userGuess === realAnswersArray[0])?'underline': '', textWrap: 'overflow'}}
-onClick={(e)=>{
-    e.preventDefault()
-    changeUserGuess(e.target.value)
-    console.log('wrong answers button', e.target.value)
-}}
->{realAnswersArray[0]}</Button>
-<Button 
-value={realAnswersArray[1]} 
-style={ {color: 'whitesmoke', backgroundColor:(userGuess === realAnswersArray[1]) ? '#07701d': '#212121', height: '100%', width: '50%', fontSize:(userGuess === realAnswersArray[1])?'2rem': '1.5rem', fontWeight:(userGuess === realAnswersArray[1])?'bold': '', textDecoration:(userGuess === realAnswersArray[1])?'underline': '', textWrap: 'overflow'}}
-onClick={(e)=>{
-    e.preventDefault()
-    changeUserGuess(e.target.value)
-    console.log('wrong answers button', e.target.value)
-}}
->{realAnswersArray[1]}</Button>
+{
+    answersArray.map((m)=>{
+        return(
+            <Button
+            key={answersArray.indexOf(m)}
+            value={m}
+            style={ {color: 'whitesmoke', backgroundColor:(userGuess === m) ? '#07701d': '#212121', 
+            width:'100%',
+            fontSize:(userGuess === m)?'2rem': '1.5rem',
+             fontWeight:(userGuess === m)?'bold': '', 
+            textDecoration:(userGuess === m)?'underline': '', 
+            textWrap: 'overflow'}}
+
+            onClick={(e)=>{
+                e.preventDefault()
+                changeUserGuess(e.target.value)
+                console.log(e.target.value, m)
+  
+            }}
+
+            >
+            {m}
+            </Button>
+         
+
+
+        )
+    })
+}
+
+
 
 </div>
-<div style={{display:'flex', flexDirection: 'row',alignItems: 'center', justifyContent: 'center',height:'5rem', width: '100%'}}>
-<Button 
-value={realAnswersArray[2]} 
-style={ {color: 'whitesmoke', backgroundColor:(userGuess === realAnswersArray[2]) ? '#07701d': '#212121', height: '100%', width: '50%', fontSize:(userGuess === realAnswersArray[2])?'2rem': '1.5rem', fontWeight:(userGuess === realAnswersArray[2])?'bold': '', textDecoration:(userGuess === realAnswersArray[2])?'underline': '', textWrap: 'overflow'}}
-onClick={(e)=>{
-    e.preventDefault()
-    changeUserGuess(e.target.value)
-    console.log('wrong answers button', e.target.value)
-}}
->{realAnswersArray[2]}</Button>
-<Button 
-value={realAnswersArray[3]} 
-style={ {color: 'whitesmoke', backgroundColor:(userGuess === realAnswersArray[3]) ? '#07701d': '#212121', height: '100%', width: '50%', fontSize:(userGuess === realAnswersArray[3])?'2rem': '1.5rem', fontWeight:(userGuess === realAnswersArray[3])?'bold': '', textDecoration:(userGuess === realAnswersArray[3])?'underline': '', textWrap: 'overflow'}}
-onClick={(e)=>{
-    e.preventDefault()
-    changeUserGuess(e.target.value)
-    console.log('wrong answers button', e.target.value)
-}}
->{realAnswersArray[3]}</Button>
 
-</div>
 
 <Card.Footer style={{
     display: 'flex', flexDirection: 'row',  marginLeft:'80%'
@@ -249,7 +236,7 @@ onClick={(e)=>{
      style={{width: '100%', height: '2rem',  marginTop:'2rem', backgroundColor: (userGuess === 'SELECT AN ANSWER')?'#212121' : '#07701d', color:'whitesmoke'}}
      disabled={(userGuess=== 'SELECT AN ANSWER') ? true : false} 
      bg='primary' type='submit'
-     >{(userGuess=== 'SELECT AN ANSWER') ? 'Select Your Guess' : 'Submit'}</Button>
+     >Submit</Button>
 
      </Card.Footer>
      </Form>

@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React, { useEffect} from 'react'
 import Badge from 'react-bootstrap/Badge'
 import Button from 'react-bootstrap/Button'
-import {FaCogs, FaCheck} from 'react-icons/fa'
+import { FaCheck} from 'react-icons/fa'
 
 const SettingsMenu =  (props) => {
     
@@ -130,7 +130,7 @@ function AmountMenu(props){
          
          <Badge as='button' 
          value={10}
-         style={(props.qAmount == 10)? 
+         style={(props.qAmount === 10)? 
              {backgroundColor: '#07701d', color: 'whitesmoke', marginLeft: '1.5rem', marginRight:'1.5rem', height: '3rem', width: '3rem', fontSize: '1.5rem'} 
              :
              {backgroundColor: '#212121', color: 'whitesmoke',  marginLeft: '1.5rem', marginRight:'1.5rem', height: '3rem', width: '3rem', fontSize: '1.5rem'}} 

@@ -1,7 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import logo from './logo.svg';
 import './App.css';
-import QuestionCard from './Components/QuestionCard';
 import QuizPage from './Components/QuizPage';
 import MainHeader from './Components/MainHeader';
 
@@ -44,7 +42,6 @@ fetch('https://opentdb.com/api_token.php?command=request').then((response)=> {
     }
     const customURL = await'https://opentdb.com/api.php?' + 'amount=' + customParams.amount + '&category=' + customParams.category + '&difficulty=' + customParams.difficulty + '&type=' + customParams.type + '&token=' + customParams.token
     console.log('customParams and token', customParams, sessionToken)
-    const originalURL ='https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean'
    console.log('customURL',customURL)
     fetch(customURL).then((response)=>{
       return response.json()

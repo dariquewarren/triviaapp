@@ -1,13 +1,12 @@
 import React, { useState, useEffect} from 'react'
-import Button from 'react-bootstrap/Button'
 import Badge from 'react-bootstrap/Badge'
 import QuestionCard from './QuestionCard'
 import ResultsPage from './ResultsPage'
 
 function QuizPage(props) {
-
+  
     
-   
+  
  
   
     const handleQuizAnswers =(quizObject)=>{
@@ -30,9 +29,12 @@ function QuizPage(props) {
 
         }
 
-        useEffect(()=>{
 
-        },[props.quizData])
+        
+
+        useEffect(()=>{
+         console.log(props)
+        },[props, props.quizData])
 
 
     return  (
@@ -42,7 +44,7 @@ function QuizPage(props) {
     ?
     <p></p>
     :
-    <aside style={{border: '2px solid red', height: 'auto', width: 'auto', paddingLeft:'15px', marginLeft:'15px', float:'right'}} >
+    <aside style={{height: 'auto', width: 'auto', paddingLeft:'15px', marginLeft:'15px', float:'right'}} >
     <Badge style={{width:'50%', color: 'whitesmoke', fontSize: '2rem'}}>
     {props.questionsAnswered}/{(props.quiz) ? props.quiz.length : 'undefined'}
    
@@ -67,6 +69,7 @@ function QuizPage(props) {
                   toggleShowResultsPage={props.toggleShowResultsPage}
                   quizLength={props.quiz.length}
                   quizType={m.type}
+                
                  {...m}/>
             )
           })
